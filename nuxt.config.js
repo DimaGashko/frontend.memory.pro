@@ -4,14 +4,16 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: "Memory.pro - you're going to become a memory master!",
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content:
+          'Memory.pro is a cool place for memory training - train ' +
+          'your memory and become a memory master.'
       }
     ],
     link: [{ rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.png' }]
