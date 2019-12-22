@@ -25,11 +25,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['assets/styles/index.scss', 'bootstrap-vue/dist/bootstrap-vue.css'],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['plugins/bootstrap.js'],
   /*
    ** Nuxt.js dev-modules
    */
