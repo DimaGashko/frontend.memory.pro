@@ -4,6 +4,14 @@
 
 > You're going to become a memory master!
 
+## Langs & techs
+
+- Javascript
+- Scss, html
+- VueJs
+- NuxtJs
+- Yarn
+
 ## Build Setup
 
 ``` bash
