@@ -15,6 +15,7 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
+          <b-nav-item to="/">Home</b-nav-item>
           <b-nav-item to="/train">Train</b-nav-item>
           <b-nav-item to="/leaderboard">Leaderboard</b-nav-item>
           <b-nav-item to="/performance">Performance</b-nav-item>
@@ -29,7 +30,7 @@
               <em>DmitryGashko </em>
             </template>
             <b-dropdown-item to="/users/DmitryGashko">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            <b-dropdown-item to="/signout">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>

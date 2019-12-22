@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <header>
+  <div class="app">
+    <header class="app__header">
       <AppNavbar></AppNavbar>
     </header>
-    <b-container>
-      <nuxt class="mt-3" />
+    <b-container class="app__container">
+      <nuxt />
     </b-container>
   </div>
 </template>
@@ -19,4 +19,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.app {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+}
+
+.app__container {
+  flex: 1;
+
+  padding-top: 1rem;
+}
+</style>
