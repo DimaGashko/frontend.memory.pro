@@ -4,7 +4,7 @@
       <AppNavbar></AppNavbar>
     </header>
     <b-container>
-      <nuxt />
+      <nuxt class="mt-3" />
     </b-container>
   </div>
 </template>

@@ -1,2 +1,6 @@
 @import 'bootstrap-variables.scss';
 @import '~bootstrap/scss/bootstrap.scss';
+
+.__nuxt-error-page {
+   z-index: -1;
+}
