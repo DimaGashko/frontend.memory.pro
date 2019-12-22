@@ -30,7 +30,7 @@
               <em>DmitryGashko </em>
             </template>
             <b-dropdown-item to="/users/DmitryGashko">Profile</b-dropdown-item>
-            <b-dropdown-item to="/signout">Sign Out</b-dropdown-item>
+            <b-dropdown-item to="/logout">Log Out</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
