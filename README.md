@@ -2,9 +2,11 @@
   
 ![version](https://img.shields.io/badge/version-0.0.02%20(sketch)-red)
 
-API repo: [github.com/DimaGashko/api.memory.pro](https://github.com/DimaGashko/api.memory.pro)
-
 > You're going to become a memory master!
+
+## API
+
+API repo: [github.com/DimaGashko/api.memory.pro](https://github.com/DimaGashko/api.memory.pro)
 
 ## Build Setup
 
