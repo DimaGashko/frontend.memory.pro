@@ -6,14 +6,13 @@
 
 ## Lang & techs
 
-- Javascript
-- Scss, html
-- VueJs
+- Js, VueJs
 - Nuxt.js
 - Nuxt Auth
-- Yarn
+- Scss, html
 - Axios
 - Bootstrap
+- Yarn
 
 ## Build Setup
 
