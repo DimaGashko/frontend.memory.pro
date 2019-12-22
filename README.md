@@ -4,7 +4,7 @@
 
 > You're going to become a memory master!
 
-## Langs & techs
+## Lang & techs
 
 - Javascript
 - Scss, html
