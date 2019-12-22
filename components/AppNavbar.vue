@@ -1,7 +1,15 @@
 <template>
-  <header>
+  <div>
     <b-navbar toggleable="lg" type="dark" variant="primary">
-      <b-navbar-brand href="#">Memory.pro</b-navbar-brand>
+      <b-navbar-brand to="/">
+        <img
+          src="/logo/logo-white.svg"
+          width="32"
+          class="d-inline-block align-top mr-1"
+          alt="Memory.pro"
+        />
+        Memory.pro
+      </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -9,7 +17,7 @@
         <b-navbar-nav>
           <b-nav-item to="/train">Train</b-nav-item>
           <b-nav-item to="/leaderboard">Leaderboard</b-nav-item>
-          <b-nav-item to="/leaderboard">Performance</b-nav-item>
+          <b-nav-item to="/performance">Performance</b-nav-item>
           <b-nav-item to="/contacts">Contacts</b-nav-item>
         </b-navbar-nav>
 
@@ -26,7 +34,7 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-  </header>
+  </div>
 </template>
 
 <script>

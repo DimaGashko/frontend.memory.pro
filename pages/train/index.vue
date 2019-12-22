@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <h1>Solo Training</h1>
 
     <ul>

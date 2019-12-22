@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <h1>User ({{ $route.params.username }})</h1>
   </div>
 </template>
