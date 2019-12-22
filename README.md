@@ -9,8 +9,11 @@
 - Javascript
 - Scss, html
 - VueJs
-- NuxtJs
+- Nuxt.js
+- Nuxt Auth
 - Yarn
+- Axios
+- Bootstrap
 
 ## Build Setup
 
