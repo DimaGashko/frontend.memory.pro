@@ -1,8 +1,6 @@
 # Memory.pro - Frontend
   
-> ![version](https://img.shields.io/badge/version-0.0.02%20(sketch)-red)
-
-API repo: [github.com/DimaGashko/api.memory.pro](https://github.com/DimaGashko/api.memory.pro)
+![version](https://img.shields.io/badge/version-0.0.02%20(sketch)-red)
 
 You're going to become a memory master!
 
@@ -24,3 +22,7 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+## Other 
+
+API repo: [github.com/DimaGashko/api.memory.pro](https://github.com/DimaGashko/api.memory.pro)
