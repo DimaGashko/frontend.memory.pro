@@ -54,6 +54,8 @@ export default {
     // Options
   },
 
+  router: {},
+
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
