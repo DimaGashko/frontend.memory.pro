@@ -1,13 +1,12 @@
 <template>
   <div>
     <h1>Login</h1>
+    <p>Click on the button to oauth2 authentication</p>
 
-    <n-link to="/register">Create an account</n-link>
+    <b-button v-on:click="$auth.loginWith('laravel.passport')" variant="primary"
+      >Login or Register</b-button
+    >
   </div>
 </template>
-
-<script>
-export default {};
-</script>
 
 <style></style>

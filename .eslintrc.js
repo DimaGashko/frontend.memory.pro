@@ -18,6 +18,7 @@ module.exports = {
     'prettier'
   ],
   rules: {
-    'vue/require-prop-types': 'off'
+    'vue/require-prop-types': 'off',
+    'no-console': 'off',
   }
 }

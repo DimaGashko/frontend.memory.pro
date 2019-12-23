@@ -1,6 +1,10 @@
 <template>
   <div>
-    <h1 v-on:click="login">Welcome to the Memory.pro!</h1>
+    <h1>Welcome to the Memory.pro!</h1>
+    <p>Train you memory and become a memory master!</p>
+
+    <h2 class="mb-3">Availabe trainings</h2>
+    <TrainingList />
 
     {{ $auth.loggedIn }}
     <div v-if="$auth.loggedIn">
@@ -11,13 +15,10 @@
 </template>
 
 <script>
+import TrainingList from '@/components/TrainingList';
+
 export default {
-  methods: {
-    login() {
-      // this.$auth.fetchUser();
-      this.$auth.loginWith('laravel.passport');
-    }
-  }
+  components: { TrainingList }
 };
 </script>
 
