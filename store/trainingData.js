@@ -23,5 +23,10 @@ export const actions = {
     } catch (e) {
       processRequestError(e);
     }
+  },
+  randNumbers(_, number) {
+    return new Array(number).fill(0).map(() => {
+      return Math.round(Math.random() * 9);
+    });
   }
 };

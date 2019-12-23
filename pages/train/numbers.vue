@@ -5,18 +5,17 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   methods: {
-    get() {
-      const words = this.rand(100);
-      console.log(words);
+    async get() {
+      const numbers = await this.rand(100);
+      console.log(numbers);
     },
-    rand(number) {
-      return new Array(number).fill(0).map(this.randDigit);
-    },
-    randDigit() {
-      return Math.round(Math.random() * 9);
-    }
+    ...mapActions({
+      rand: 'trainingData/randNumbers'
+    })
   }
 };
 </script>
