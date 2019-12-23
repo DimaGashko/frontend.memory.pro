@@ -8,7 +8,9 @@
 export default {
   methods: {
     login() {
-      this.$auth.loginWith('laravel.passport');
+      this.$auth
+        .loginWith('laravel.passport')
+        .then(() => this.$toast.success('Logged In!'));
     }
   }
 };
