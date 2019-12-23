@@ -1,6 +1,5 @@
 import {
   processRequestError,
-  getRemoveAuthObj,
   removeAuthHeader
 } from '~/assets/scripts/utils/base.ts';
 
@@ -18,7 +17,9 @@ export const actions = {
   },
   async randImages(_, number) {
     try {
-      return await this.$axios.$get(`/images/rand/${number}`, getRemoveAuthObj);
+      return await this.$axios.$get(`/images/rand/${number}`, {
+        transformRequest: [removeAuthHeader]
+      });
     } catch (e) {
       processRequestError(e);
     }

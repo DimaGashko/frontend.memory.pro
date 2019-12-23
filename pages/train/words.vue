@@ -10,8 +10,8 @@ import { mapActions } from 'vuex';
 export default {
   computed: {},
   methods: {
-    get() {
-      const words = this.rand(10000000);
+    async get() {
+      const words = await this.rand(100);
       console.log(words);
     },
     ...mapActions({
