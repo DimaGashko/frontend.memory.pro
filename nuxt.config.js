@@ -1,3 +1,5 @@
+import env from './env';
+
 export default {
   mode: 'spa',
   /*
@@ -51,9 +53,15 @@ export default {
   ],
 
   auth: {
-    // Options
+    strategies: {
+      local: false,
+      'laravel.passport': {
+        url: env.apiUrl,
+        client_id: 3,
+        client_secret: '6uRpRsZu6cHod93dRNCCP3GaCPyHjEEiHYRNftyW'
+      }
+    }
   },
-
   router: {},
 
   /*
@@ -61,6 +69,7 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+
   /*
    ** Build configuration
    */
@@ -69,5 +78,7 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
-  }
+  },
+
+  env
 };
