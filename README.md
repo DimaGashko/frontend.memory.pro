@@ -6,7 +6,8 @@
 
 ## Lang & techs
 
-- Js, VueJs
+- JavaScript, Typescript
+- VueJs
 - Nuxt.js
 - Nuxt Auth
 - Scss, html
