@@ -48,10 +48,6 @@
 export default {
   computed: {
     profilePath() {
-      if (!this.$auth.loggedIn) {
-        return '/';
-      }
-
       return `/users/${this.$auth.user.username}`;
     }
   }

@@ -1,15 +1,18 @@
 <template>
   <div>
     <h1>Logout</h1>
-    <p>Wait a moment...</p>
+    <p>What to leave? Click the button to logout</p>
+    <b-button v-on:click="logout" variant="primary">Logout</b-button>
   </div>
 </template>
 
 <script>
 export default {
   middleware: 'auth',
-  created() {
-    setTimeout(() => this.$auth.logout(), 1000);
+  methods: {
+    logout() {
+      this.$auth.logout();
+    }
   }
 };
 </script>

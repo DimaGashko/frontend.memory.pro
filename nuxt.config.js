@@ -55,9 +55,9 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: env.appUrl,
+    baseURL: env.apiUrl,
     headers: {
-      common: {
+      get: {
         Accept: 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       }
