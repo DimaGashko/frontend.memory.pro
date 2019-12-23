@@ -43,6 +43,7 @@ export default {
         client_id: env.client_id,
         client_secret: env.client_secret,
         userinfo_endpoint: `${env.apiUrl}/user`
+        //  redirect_uri: env.apiUrl
       }
     }
   },

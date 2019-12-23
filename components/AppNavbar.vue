@@ -24,7 +24,7 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item-dropdown right>
+          <b-nav-item-dropdown v-if="$auth.loggedIn" right>
             <!-- Using 'button-content' slot -->
             <template v-slot:button-content>
               <em>DmitryGashko</em>
@@ -32,6 +32,12 @@
             <b-dropdown-item to="/users/DmitryGashko">Profile</b-dropdown-item>
             <b-dropdown-item to="/logout">Log Out</b-dropdown-item>
           </b-nav-item-dropdown>
+          <b-nav-item
+            v-else
+            v-on:click="$auth.loginWith('laravel.passport')"
+            f-else
+            >Login</b-nav-item
+          >
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
