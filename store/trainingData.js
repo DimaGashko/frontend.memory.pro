@@ -14,7 +14,7 @@ export const actions = {
         ]
       });
     } catch (e) {
-      throw processRequestError(e);
+      processRequestError(e);
     }
   }
 };
