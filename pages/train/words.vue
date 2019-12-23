@@ -11,7 +11,7 @@ export default {
   computed: {},
   methods: {
     get() {
-      const words = this.rand(25);
+      const words = this.rand(10000000);
       console.log(words);
     },
     ...mapActions({
