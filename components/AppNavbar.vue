@@ -32,12 +32,7 @@
             <b-dropdown-item :to="profilePath">Profile</b-dropdown-item>
             <b-dropdown-item to="/logout">Log Out</b-dropdown-item>
           </b-nav-item-dropdown>
-          <b-nav-item
-            v-else
-            v-on:click="$auth.loginWith('laravel.passport')"
-            f-else
-            >Login</b-nav-item
-          >
+          <b-nav-item v-else to="/login">Login</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>

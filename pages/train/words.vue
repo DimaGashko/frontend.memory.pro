@@ -6,13 +6,16 @@
 
 <script>
 import { mapActions } from 'vuex';
+import splitAndFormatByTemplate from '../../assets/scripts/splitByTemplate';
 
 export default {
   computed: {},
   methods: {
     async get() {
       const words = await this.rand(100);
+      window.w = words;
       console.log(words);
+      window.split = splitAndFormatByTemplate;
     },
     ...mapActions({
       rand: 'trainingData/randWords'
