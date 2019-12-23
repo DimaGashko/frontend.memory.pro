@@ -8,6 +8,7 @@
 
 - JavaScript, Typescript
 - VueJs
+- Vuex
 - Nuxt.js
 - Nuxt Auth
 - Scss, html
