@@ -7,3 +7,8 @@ export function processRequestError(exception) {
    console.error(exception.response.data.message)
    throw 'Wrong request data';
 }
+
+export function removeAuthHeader(data, headers) {
+   delete headers.common.Authorization;
+   return data;
+}

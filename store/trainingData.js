@@ -1,18 +1,24 @@
-import { processRequestError } from '~/assets/scripts/utils/base.ts';
+import {
+  processRequestError,
+  getRemoveAuthObj,
+  removeAuthHeader
+} from '~/assets/scripts/utils/base.ts';
 
 export const state = () => ({});
 
 export const actions = {
-  async randWords({ $auth }, number) {
+  async randWords(_, number) {
     try {
       return await this.$axios.$get(`/words/rand/${number}`, {
-        transformRequest: [
-          (data, headers) => {
-            delete headers.common.Authorization;
-            return data;
-          }
-        ]
+        transformRequest: [removeAuthHeader]
       });
+    } catch (e) {
+      processRequestError(e);
+    }
+  },
+  async randImages(_, number) {
+    try {
+      return await this.$axios.$get(`/images/rand/${number}`, getRemoveAuthObj);
     } catch (e) {
       processRequestError(e);
     }
