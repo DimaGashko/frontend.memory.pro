@@ -27,9 +27,9 @@
           <b-nav-item-dropdown v-if="$auth.loggedIn" right>
             <!-- Using 'button-content' slot -->
             <template v-slot:button-content>
-              <em>DmitryGashko</em>
+              <em>{{ $auth.user.username }}</em>
             </template>
-            <b-dropdown-item to="/users/DmitryGashko">Profile</b-dropdown-item>
+            <b-dropdown-item :to="profilePath">Profile</b-dropdown-item>
             <b-dropdown-item to="/logout">Log Out</b-dropdown-item>
           </b-nav-item-dropdown>
           <b-nav-item
@@ -45,7 +45,17 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    profilePath() {
+      if (!this.$auth.loggedIn) {
+        return '/';
+      }
+
+      return `/users/${this.$auth.user.username}`;
+    }
+  }
+};
 </script>
 
 <style></style>
