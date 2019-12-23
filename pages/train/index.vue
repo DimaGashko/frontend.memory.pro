@@ -1,23 +1,41 @@
 <template>
   <div>
-    <h1>Solo Training</h1>
+    <h1 class="mb-4">Solo Training</h1>
 
-    <ul>
-      <li>
-        <n-link to="/train/numbers">Numbers</n-link>
-      </li>
-      <li>
-        <n-link to="/train//words">Words</n-link>
-      </li>
-      <li>
-        <n-link to="/train/images">Images</n-link>
+    <ul class="list">
+      <li v-for="item in types" :key="item.path" class="item">
+        <TrainingPreviewCard v-bind:data="item" />
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapState } from 'vuex';
+import TrainingPreviewCard from '@/components/TrainingPreviewCard';
+
+export default {
+  components: { TrainingPreviewCard },
+  computed: {
+    ...mapState({
+      types: state => state.local.trainingTypes
+    })
+  }
+};
 </script>
 
-<style></style>
+<style scoped>
+.list {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.item {
+  margin-right: 2em;
+  margin-bottom: 2em;
+}
+</style>

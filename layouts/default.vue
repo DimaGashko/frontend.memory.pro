@@ -15,6 +15,11 @@ import AppNavbar from '@/components/AppNavbar';
 export default {
   components: {
     AppNavbar
+  },
+  async fetch({ store }) {
+    console.log('hi');
+
+    await store.user.dispatch('loadUsser');
   }
 };
 </script>

@@ -27,7 +27,7 @@
           <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
             <template v-slot:button-content>
-              <em>DmitryGashko </em>
+              <em>DmitryGashko</em>
             </template>
             <b-dropdown-item to="/users/DmitryGashko">Profile</b-dropdown-item>
             <b-dropdown-item to="/logout">Log Out</b-dropdown-item>

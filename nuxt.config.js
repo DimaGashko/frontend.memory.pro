@@ -41,7 +41,8 @@ export default {
       'laravel.passport': {
         url: env.apiUrl,
         client_id: env.client_id,
-        client_secret: env.client_secret
+        client_secret: env.client_secret,
+        userinfo_endpoint: `${env.apiUrl}/user`
       }
     }
   },

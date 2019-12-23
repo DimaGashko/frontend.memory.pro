@@ -1,6 +1,12 @@
 <template>
   <div>
     <h1 v-on:click="login">Welcome to the Memory.pro!</h1>
+
+    {{ $auth.loggedIn }}
+    <div v-if="$auth.loggedIn">
+      <h2>Hi, {{ $auth.user }}</h2>
+    </div>
+    <div v-else>Oh no 😢</div>
   </div>
 </template>
 
@@ -8,9 +14,8 @@
 export default {
   methods: {
     login() {
-      this.$auth
-        .loginWith('laravel.passport')
-        .then(() => this.$toast.success('Logged In!'));
+      // this.$auth.fetchUser();
+      this.$auth.loginWith('laravel.passport');
     }
   }
 };
