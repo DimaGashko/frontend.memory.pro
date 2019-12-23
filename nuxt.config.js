@@ -1,10 +1,8 @@
-import env from './env';
+import env from './.env';
 
 export default {
   mode: 'spa',
-  /*
-   ** Headers of the page
-   */
+
   head: {
     title: "Memory.pro - you're going to become a memory master!",
     meta: [
@@ -24,55 +22,46 @@ export default {
    ** Customize the progress-bar color
    */
   loading: { color: '#fff' },
-  /*
-   ** Global CSS
-   */
+
   css: ['assets/styles/index.scss', 'bootstrap-vue/dist/bootstrap-vue.css'],
-  /*
-   ** Plugins to load before mounting the App
-   */
+
   plugins: ['plugins/bootstrap.js'],
-  /*
-   ** Nuxt.js dev-modules
-   */
+
   buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module'
     // Doc: https://github.com/nuxt-community/stylelint-module
     // '@nuxtjs/stylelint-module'
   ],
-  /*
-   ** Nuxt.js modules
-   */
-  modules: [
-    // Doc: https://bootstrap-vue.js.org
-    'bootstrap-vue/nuxt',
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    '@nuxtjs/auth'
-  ],
+
+  modules: ['bootstrap-vue/nuxt', '@nuxtjs/axios', '@nuxtjs/auth'],
 
   auth: {
     strategies: {
       local: false,
       'laravel.passport': {
         url: env.apiUrl,
-        client_id: 3,
-        client_secret: '6uRpRsZu6cHod93dRNCCP3GaCPyHjEEiHYRNftyW'
+        client_id: env.client_id,
+        client_secret: env.client_secret
       }
     }
   },
+
   router: {},
 
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: env.appUrl,
+    headers: {
+      common: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    }
+  },
 
-  /*
-   ** Build configuration
-   */
   build: {
     /*
      ** You can extend webpack config here
