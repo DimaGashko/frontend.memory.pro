@@ -1,7 +1,7 @@
 import {
   processRequestError,
   removeAuthHeader
-} from '~/assets/scripts/utils/base.ts';
+} from '~/assets/scripts/utils.ts';
 
 export const state = () => ({});
 
