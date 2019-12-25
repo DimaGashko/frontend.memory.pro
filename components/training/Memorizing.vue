@@ -1,16 +1,21 @@
 <template>
   <div>
     <SimpleDataItem :value="word" :even="even" />
-    <RememberingControllers />
+    <RememberingControlers
+      @next="next"
+      @prev="prev"
+      @first="first"
+      @finish="finish"
+    />
   </div>
 </template>
 
 <script>
 import SimpleDataItem from '@/components/training/SimpleDataItem';
-import RememberingControllers from '@/components/training/RememberingControllers';
+import RememberingControlers from '@/components/training/RememberingControlers';
 
 export default {
-  components: { SimpleDataItem, RememberingControllers },
+  components: { SimpleDataItem, RememberingControlers },
   data: () => ({
     word: 'Greatness',
     even: false
@@ -29,6 +34,20 @@ export default {
       this.even = i % 2 === 0;
       i++;
     }, 500);
+  },
+  methods: {
+    prev() {
+      console.log('prev');
+    },
+    next() {
+      console.log('next');
+    },
+    first() {
+      console.log('first');
+    },
+    finish() {
+      console.log('finished');
+    }
   }
 };
 </script>

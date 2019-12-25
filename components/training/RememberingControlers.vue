@@ -7,11 +7,13 @@
       <b-button @click="next" block size="lg">Next (Space)</b-button>
     </li>
     <li>
-      <b-button @click="toFirst" block size="lg">First (Alt + Enter)</b-button>
+      <b-button @click="toFirst" block size="lg"
+        >First (Shift + Enter)</b-button
+      >
     </li>
     <li>
       <b-button @click="finish" block size="lg"
-        >Finished (Alt + Space)</b-button
+        >Finished (Shift + Space)</b-button
       >
     </li>
   </ul>
@@ -42,22 +44,22 @@ export default {
       this.$emit('prev');
     },
     next() {
-      this.$emit('prev');
+      this.$emit('next');
     },
     toFirst() {
-      this.$emit('prev');
+      this.$emit('first');
     },
     finish() {
-      this.$emit('prev');
+      this.$emit('finish');
     },
-    keyEvent({ keyCode, altKey }) {
+    keyEvent({ keyCode, shiftKey }) {
       const action = this.KEYS[keyCode];
 
-      if (altKey) {
+      if (shiftKey) {
         if (action === 'next') this.finish();
         else if (action === 'prev') this.toFirst();
       } else if (action === 'next') this.next();
-      else if (action === 'prev') this.perv();
+      else if (action === 'prev') this.prev();
     },
     atartAutoNext() {
       this.stopAutoNext();
