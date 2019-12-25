@@ -1,27 +1,33 @@
 <template>
   <ul class="list">
     <li>
-      <b-button @click="prev" variant="primary" block size="lg">
+      <b-button @click="prev" variant="primary" tabindex="-1" block size="lg">
         Prev
-        <span class="key-hint">(Enter)</span>
+        <span class="key-hint">(Shif + Space)</span>
       </b-button>
     </li>
     <li>
-      <b-button @click="next" variant="primary" block size="lg">
+      <b-button @click="next" variant="primary" tabindex="-1" block size="lg">
         Next
         <span class="key-hint">(Space)</span>
       </b-button>
     </li>
     <li>
-      <b-button @click="toFirst" variant="primary" block size="lg">
+      <b-button
+        @click="toFirst"
+        variant="primary"
+        tabindex="-1"
+        block
+        size="lg"
+      >
         First
-        <span class="key-hint">(Shift + Enter)</span>
+        <span class="key-hint">(Esc)</span>
       </b-button>
     </li>
     <li>
-      <b-button @click="finish" variant="primary" block size="lg">
+      <b-button @click="finish" variant="primary" tabindex="-1" block size="lg">
         Finished
-        <span class="key-hint">(Shift + Space)</span>
+        <span class="key-hint">(Shift + Enter)</span>
       </b-button>
     </li>
   </ul>
@@ -31,12 +37,6 @@
 export default {
   props: ['autoNext'],
   data: () => ({
-    KEYS: {
-      32: 'next',
-      13: 'prev',
-      37: 'prev',
-      39: 'next'
-    },
     timer: 0
   }),
   mounted() {
@@ -60,14 +60,27 @@ export default {
     finish() {
       this.$emit('finish');
     },
-    keyEvent({ keyCode, shiftKey }) {
-      const action = this.KEYS[keyCode];
+    keyEvent(event) {
+      const { code, shiftKey } = event;
+      let action = null;
 
-      if (shiftKey) {
-        if (action === 'next') this.finish();
-        else if (action === 'prev') this.toFirst();
-      } else if (action === 'next') this.next();
+      if (code === 'Enter' && shiftKey) action = 'finish';
+      else if (code === 'Space' && shiftKey) action = 'prev';
+      else if (code === 'Space') action = 'next';
+      else if (code === 'Escape') action = 'first';
+      else if (code === 'ArrowLeft') action = 'prev';
+      else if (code === 'ArrowRight') action = 'next';
+
+      if (!action) {
+        return;
+      }
+
+      if (action === 'next') this.next();
       else if (action === 'prev') this.prev();
+      else if (action === 'first') this.toFirst();
+      else if (action === 'finish') this.finish();
+
+      event.preventDefault();
     },
     startAutoNext() {
       this.stopAutoNext();

@@ -2,8 +2,8 @@
   <div>
     <TextItem :value="item" :even="even" />
     <Status :cur="index + 1" :total="data.length" class="status" />
-    <Control
-      ref="control"
+    <Controls
+      ref="controls"
       @next="next"
       @prev="prev"
       @first="first"
@@ -16,11 +16,11 @@
 
 <script>
 import TextItem from '@@/train/TextItem';
-import Control from '@@/train/Control';
+import Controls from '@@/train/Controls';
 import Status from '@@/train/Status';
 
 export default {
-  components: { TextItem, Control, Status },
+  components: { TextItem, Controls, Status },
   props: ['params'],
   data: () => ({
     index: 0,
@@ -54,10 +54,11 @@ export default {
       this.onChangeItemManually();
     },
     done() {
+      this.index = this.data.length - 1;
       console.log('finished');
     },
     onChangeItemManually() {
-      this.$refs.control.restartAutoNext();
+      this.$refs.controls.restartAutoNext();
     }
   }
 };
