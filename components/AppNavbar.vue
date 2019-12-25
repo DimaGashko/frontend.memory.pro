@@ -15,11 +15,15 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item to="/">Home</b-nav-item>
-          <b-nav-item to="/train">Train</b-nav-item>
-          <b-nav-item to="/leaderboard">Leaderboard</b-nav-item>
-          <b-nav-item to="/performance">Performance</b-nav-item>
-          <b-nav-item to="/contacts">Contacts</b-nav-item>
+          <b-nav-item active-class="active" exact to="/">Home</b-nav-item>
+          <b-nav-item active-class="active" to="/train">Train</b-nav-item>
+          <b-nav-item active-class="active" to="/leaderboard"
+            >Leaderboard</b-nav-item
+          >
+          <b-nav-item active-class="active" to="/performance"
+            >Performance</b-nav-item
+          >
+          <b-nav-item active-class="active" to="/contacts">Contacts</b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
