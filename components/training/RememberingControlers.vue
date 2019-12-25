@@ -1,18 +1,22 @@
 <template>
   <ul class="list">
     <li>
-      <b-button @click="prev" block size="lg">Prev (Enter)</b-button>
+      <b-button @click="prev" variant="primary" block size="lg"
+        >Prev (Enter)</b-button
+      >
     </li>
     <li>
-      <b-button @click="next" block size="lg">Next (Space)</b-button>
+      <b-button @click="next" variant="primary" block size="lg"
+        >Next (Space)</b-button
+      >
     </li>
     <li>
-      <b-button @click="toFirst" block size="lg"
+      <b-button @click="toFirst" variant="primary" block size="lg"
         >First (Shift + Enter)</b-button
       >
     </li>
     <li>
-      <b-button @click="finish" block size="lg"
+      <b-button @click="finish" variant="primary" block size="lg"
         >Finished (Shift + Space)</b-button
       >
     </li>

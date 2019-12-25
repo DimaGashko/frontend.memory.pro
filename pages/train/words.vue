@@ -4,9 +4,21 @@
       :time="time"
       v-if="step === 'preparation'"
       @done="preparationDone"
+      title="Memorization starts in:"
       class="step"
     />
-    <Memorizing v-else-if="step === 'memorizing'" />
+
+    <Memorizing v-else-if="step === 'memorizing'" class="step" />
+
+    <Preparation
+      :time="time"
+      v-if="step === 'recall-preparation'"
+      @done="preparationDone"
+      title="Recall starts in:"
+      class="step"
+    />
+
+    <Remembering v-else-if="step === 'rememmbering'" class="step" />
   </div>
 </template>
 
@@ -16,12 +28,14 @@ import splitAndFormatByTemplate from '../../assets/scripts/splitByTemplate';
 
 import Preparation from '@/components/training/Preparation';
 import Memorizing from '@/components/training/Memorizing';
+import Remembering from '@/components/training/Remembering';
 
 export default {
-  components: { Preparation, Memorizing },
+  components: { Preparation, Memorizing, Remembering },
   data: () => ({
-    step: 'preparation',
-    time: 66
+    step: 'setup',
+    preparationTime: 90,
+    recallPreparationTime: 30
   }),
   computed: {},
   methods: {
