@@ -1,7 +1,7 @@
 <template>
   <div>
     <SimpleDataItem :value="word" :even="even" />
-    <Status :cur="cur" class="status" total="100" />
+    <Status :cur="cur" class="status" total="50" />
     <RememberingControlers
       @next="next"
       @prev="prev"
@@ -61,6 +61,6 @@ export default {
 .<style lang="scss" scoped>
 .controls,
 .status {
-  margin-top: 32px;
+  margin-top: 24px;
 }
 </style>
