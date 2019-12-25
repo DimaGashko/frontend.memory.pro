@@ -1,19 +1,78 @@
 <template>
   <ul class="list">
     <li>
-      <b-button block size="lg">Prev (Space)</b-button>
+      <b-button @click="prev" block size="lg">Prev (Enter)</b-button>
     </li>
     <li>
-      <b-button block size="lg">Next (Enter)</b-button>
+      <b-button @click="next" block size="lg">Next (Space)</b-button>
     </li>
     <li>
-      <b-button block size="lg">First (Alt + Space)</b-button>
+      <b-button @click="toFirst" block size="lg">First (Alt + Enter)</b-button>
     </li>
     <li>
-      <b-button block size="lg">Finished (Alt + Enter)</b-button>
+      <b-button @click="finish" block size="lg"
+        >Finished (Alt + Space)</b-button
+      >
     </li>
   </ul>
 </template>
+
+<script>
+export default {
+  props: ['autoNext'],
+  data: () => ({
+    KEYS: {
+      32: 'next',
+      13: 'prev',
+      37: 'prev',
+      39: 'next'
+    },
+    timer: 0
+  }),
+  mounted() {
+    document.addEventListener('keyup', this.keyEvent);
+    if (this.autoNext > 0) this.startAutoNext();
+  },
+  destroyed() {
+    document.removeEventListener('keyup', this.keyEvent);
+    this.stopAutoNext();
+  },
+  methods: {
+    prev() {
+      this.$emit('prev');
+    },
+    next() {
+      this.$emit('prev');
+    },
+    toFirst() {
+      this.$emit('prev');
+    },
+    finish() {
+      this.$emit('prev');
+    },
+    keyEvent({ keyCode, altKey }) {
+      const action = this.KEYS[keyCode];
+
+      if (altKey) {
+        if (action === 'next') this.finish();
+        else if (action === 'prev') this.toFirst();
+      } else if (action === 'next') this.next();
+      else if (action === 'prev') this.perv();
+    },
+    atartAutoNext() {
+      this.stopAutoNext();
+
+      this.timer = setInterval(() => {
+        this.next();
+      }, this.autoNext);
+    },
+    stopAutoNext() {
+      clearInterval(this.timer);
+      this.timer = 0;
+    }
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 .list {
