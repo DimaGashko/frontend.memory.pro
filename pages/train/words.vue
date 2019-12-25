@@ -1,19 +1,19 @@
 <template>
-  <Training>
+  <Training ref="train">
     <template #setup>
-      <Setup @done="$parent.setupDone" />
+      <Setup @done="$refs.train.$emit('setupDone')" />
     </template>
 
     <template #memorization>
-      <Memorizing @done="done" />
+      <Memorizing @done="$refs.train.$emit('memorizationDone')" />
     </template>
 
     <template #recall>
-      <Recall @done="done" />
+      <Recall @done="$refs.train.$emit('recallDone')" />
     </template>
 
     <template #results>
-      <Results @done="done" />
+      <Results />
     </template>
   </Training>
 </template>
@@ -35,6 +35,13 @@ export default {
   data: () => ({}),
   computed: {},
   methods: {
+    ram() {
+      console.log('his');
+      // $parent.$emit('setupDone')
+      console.log(this.$parent);
+
+      this.$parent.$emit('test');
+    },
     preparationDone() {
       this.step = 'memorizing';
     },

@@ -4,7 +4,7 @@ import Vue from 'vue';
  * @param {number} val time value in seconds
  */
 Vue.filter('time', function(val) {
-  if (!val) return '0';
+  if (!val) return '00:00';
   val = Math.round(val);
 
   const min = Math.floor(val / 60);

@@ -1,12 +1,8 @@
 <template>
   <div>
-    <slot :done="() => setupDone()" v-if="step === 'setup'" name="setup"></slot>
+    <slot v-if="step === 'setup'" name="setup"></slot>
 
-    <slot
-      :done="preparationDone"
-      v-else-if="step === 'preparation'"
-      name="preparation"
-    >
+    <slot v-else-if="step === 'preparation'" name="preparation">
       <Preparation
         :time="preparationTime"
         @done="preparationDone"
@@ -15,20 +11,12 @@
       />
     </slot>
 
-    <slot
-      :done="memorizationDone"
-      v-else-if="step === 'memorizing'"
-      name="memorization"
-    ></slot>
+    <slot v-else-if="step === 'memorizing'" name="memorization"></slot>
 
-    <slot
-      :done="recallPreparationDone"
-      v-else-if="step === 'recall-preparation'"
-      name="recall-preparation"
-    >
+    <slot v-else-if="step === 'recall-preparation'" name="recall-preparation">
       <Preparation
         :time="recallPreparationTime"
-        @done="preparationDone"
+        @done="recallPreparationDone"
         title="Recall starts in:"
         class="step"
       />
@@ -44,17 +32,21 @@
 import Preparation from '@@/train/steps/Preparation';
 
 export default {
+  name: 'Training',
   components: { Preparation },
   data: () => ({
     step: 'setup',
 
-    preparationTime: 90,
-    recallPreparationTime: 30
+    preparationTime: 10,
+    recallPreparationTime: 5
   }),
   computed: {},
+  mounted() {
+    this.initEvents();
+  },
   methods: {
     setupDone() {
-      // this.step = this.preparationTime > 0 ? 'preparation' : 'memorizing';
+      this.step = this.preparationTime > 0 ? 'preparation' : 'memorizing';
     },
     preparationDone() {
       this.step = 'memorizing';
@@ -68,6 +60,13 @@ export default {
     },
     recallDone() {
       this.step = 'results';
+    },
+    initEvents() {
+      this.$on('setupDone', () => this.setupDone());
+      this.$on('preparationDone', () => this.preparationDone());
+      this.$on('memorizationDone', () => this.memorizationDone());
+      this.$on('recallPreparationDone', () => this.recallPreparationDone());
+      this.$on('recallDone', () => this.recallDone());
     }
   }
 };
