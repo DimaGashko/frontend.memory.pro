@@ -85,7 +85,5 @@ export default {
   display: grid;
   grid-template: '1fr 1fr';
   gap: 1em;
-
-  margin-top: 32px;
 }
 </style>

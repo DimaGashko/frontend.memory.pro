@@ -1,5 +1,5 @@
 <template>
-  <pre :class="{ 'word--even': even }" class="word">{{ value }}</pre>
+  <pre :class="{ 'word--eve': even }" class="word">{{ value }}</pre>
 </template>
 
 <script>
