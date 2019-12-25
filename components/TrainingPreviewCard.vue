@@ -12,7 +12,6 @@
       :img-src="data.image"
       img-top
       tag="article"
-      style="max-width: 20rem;"
       class="training-card__card mb-2"
     >
       <b-card-text>{{ data.description }}</b-card-text>
@@ -43,15 +42,23 @@ export default {
 
   height: 100%;
 
-  transition: transform 0.3s;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+
   text-decoration: none;
+  outline: none;
+
+  transition: transform 0.3s, box-shadow 0.3s;
 
   &--disabled {
     opacity: 0.5;
   }
 
-  &:not(.training-card--disabled):hover {
-    transform: translateY(-6px);
+  &:not(.training-card--disabled) {
+    &:hover,
+    &:focus {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
   }
 }
 
@@ -66,7 +73,9 @@ export default {
 .training-card__card {
   .card-img-top {
     flex: 500;
+    width: 100%;
     object-fit: cover;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
 }
 </style>

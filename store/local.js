@@ -18,7 +18,7 @@ export const state = () => ({
       name: 'Images',
       path: '/train/images',
       description: 'Memorize random images',
-      image: '/img/train-preview/images.png',
+      image: '/img/train-preview/images.jpg',
       available: true
     },
     {
@@ -26,35 +26,35 @@ export const state = () => ({
       path: '/train/cards',
       description: 'Memorize playing cards',
       image: '/img/train-preview/cards.png',
-      available: true
+      available: false
     },
     {
       name: 'Names',
       path: '/train/names',
       description: "Memorize people's names",
       image: '/img/train-preview/names.png',
-      available: true
+      available: false
     },
     {
       name: 'Binary digits',
       path: '/train/binary',
       description: 'Memorize binary numbers',
       image: '/img/train-preview/binary.jpg',
-      available: true
+      available: false
     },
     {
       name: 'Spoken numbers',
       path: '/train/spoken-numbers',
       description: 'Memorize spoken numbers',
       image: '/img/train-preview/spoken-numbers.jpg',
-      available: true
+      available: false
     },
     {
       name: 'Abstract images',
       path: '/train/abstract-images',
       description: 'Memorize abstract images',
       image: '/img/train-preview/abstract-images.jpg',
-      available: true
+      available: false
     }
   ]
 });

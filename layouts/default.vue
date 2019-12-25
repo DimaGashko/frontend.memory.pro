@@ -35,11 +35,7 @@ export default {
 }
 
 .app__content {
-  flex: 1;
-
-  display: flex;
-  flex-direction: column;
-
   margin-top: 1rem;
+  flex: 1;
 }
 </style>
