@@ -44,7 +44,7 @@ export default {
     defaultParams: {
       preparationTime: 10,
       recallPreparationTime: 5,
-      autoNext: 0,
+      autoNext: 2000,
       item: 0
     },
 

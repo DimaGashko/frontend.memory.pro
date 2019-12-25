@@ -2,7 +2,8 @@
   <div>
     <SimpleDataItem :value="item" :even="even" />
     <Status :cur="index + 1" :total="data.length" class="status" />
-    <Controlers
+    <Control
+      ref="control"
       @next="next"
       @prev="prev"
       @first="first"
@@ -10,18 +11,16 @@
       :auto-next="params.autoNext"
       class="controls"
     />
-
-    <p>{{ params }}</p>
   </div>
 </template>
 
 <script>
 import SimpleDataItem from '@@/train/SimpleDataItem';
-import Controlers from '@@/train/Controlers';
+import Control from '@@/train/Control';
 import Status from '@@/train/Status';
 
 export default {
-  components: { SimpleDataItem, Controlers, Status },
+  components: { SimpleDataItem, Control, Status },
   props: ['params'],
   data: () => ({
     index: 0,
@@ -39,6 +38,7 @@ export default {
   methods: {
     prev() {
       if (this.index > 0) this.index--;
+      this.onChangeItemManually();
     },
     next() {
       if (this.index >= this.data.length - 1) {
@@ -47,12 +47,17 @@ export default {
       }
 
       this.index++;
+      this.onChangeItemManually();
     },
     first() {
       this.index = 0;
+      this.onChangeItemManually();
     },
     done() {
       console.log('finished');
+    },
+    onChangeItemManually() {
+      this.$refs.control.restartAutoNext();
     }
   }
 };

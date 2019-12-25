@@ -76,6 +76,9 @@ export default {
         this.next();
       }, this.autoNext);
     },
+    restartAutoNext() {
+      this.startAutoNext();
+    },
     stopAutoNext() {
       clearInterval(this.timer);
       this.timer = 0;
