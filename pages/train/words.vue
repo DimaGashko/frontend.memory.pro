@@ -7,6 +7,7 @@
     <template #memorization="{params}">
       <Memorizing
         :params="params"
+        :data="words"
         @done="$refs.train.$emit('memorizationDone')"
       />
     </template>
@@ -31,33 +32,17 @@ import Memorizing from '@@/train/steps/Memorizing';
 import Recall from '@@/train/steps/Recall';
 import Results from '@@/train/steps/Results';
 
-import splitAndFormatByTemplate from '@/assets/scripts/splitByTemplate';
-
 export default {
   components: { Memorizing, Recall, Setup, Results, Training },
-  data: () => ({}),
-  computed: {},
+  data: () => ({
+    words: []
+  }),
+  async created() {
+    this.words = (await this.get(25)).map(w => w.value);
+  },
   methods: {
-    ram() {
-      console.log('his');
-      // $parent.$emit('setupDone')
-      console.log(this.$parent);
-
-      this.$parent.$emit('test');
-    },
-    preparationDone() {
-      this.step = 'memorizing';
-    },
-    async get() {
-      const words = await this.rand(100);
-      window.w = words;
-      console.log(
-        splitAndFormatByTemplate(
-          'X X X',
-          words.map(w => w.value)
-        )
-      );
-      window.split = splitAndFormatByTemplate;
+    get(n) {
+      return this.rand(n);
     },
     ...mapActions({
       rand: 'trainingData/randWords'

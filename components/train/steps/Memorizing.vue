@@ -21,11 +21,13 @@ import Status from '@@/train/Status';
 
 export default {
   components: { TextItem, Controls, Status },
-  props: ['params'],
+  props: ['params', 'data'],
   data: () => ({
     index: 0,
+    pervIndex: 0,
     cur: 0,
-    data: new Array(25).fill(0).map(_ => 10 + Math.round(Math.random() * 90))
+    startedAt: null,
+    times: []
   }),
   computed: {
     item() {
@@ -34,6 +36,10 @@ export default {
     even() {
       return this.index % 2 === 0;
     }
+  },
+  mounted() {
+    this.showAt = Date.now();
+    this.times = this.data.map(_ => 0);
   },
   methods: {
     prev() {
