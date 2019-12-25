@@ -1,7 +1,7 @@
 <template>
   <p
     :class="{ 'word--even': even }"
-    :style="{ '--size': size + 'px' }"
+    :style="{ '--size': size2 + 'px' }"
     class="word"
   >
     {{ value }}
@@ -14,6 +14,11 @@ export default {
   data: () => ({
     size: 72
   }),
+  computed: {
+    size2() {
+      return this.calculateSize();
+    }
+  },
   created() {
     this.size = this.calculateSize();
   },
@@ -34,7 +39,7 @@ export default {
 <style lang="scss" scoped>
 .word {
   margin: 0;
-  padding: 35px 0;
+  padding: 50px 0;
 
   font-size: var(--size, 72px);
   text-align: center;
