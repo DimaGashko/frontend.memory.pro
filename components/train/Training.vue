@@ -75,10 +75,12 @@ export default {
     },
     initEvents() {
       this.$on('setupDone', (...args) => this.setupDone(...args));
-      this.$on('preparationDone', () => this.preparationDone());
-      this.$on('memorizationDone', () => this.memorizationDone());
-      this.$on('recallPreparationDone', () => this.recallPreparationDone());
-      this.$on('recallDone', () => this.recallDone());
+      this.$on('preparationDone', (...args) => this.preparationDone(...args));
+      this.$on('memorizationDone', (...args) => this.memorizationDone(...args));
+      this.$on('recallPreparationDone', (...args) => {
+        this.recallPreparationDone(...args);
+      });
+      this.$on('recallDone', (...args) => this.recallDone());
     }
   }
 };

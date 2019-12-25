@@ -2,7 +2,7 @@
   <div>
     <SimpleDataItem :value="word" :even="even" />
     <Status :cur="cur" class="status" total="50" />
-    <RememberingControlers
+    <Controlers
       @next="next"
       @prev="prev"
       @first="first"
@@ -17,11 +17,11 @@
 
 <script>
 import SimpleDataItem from '@@/train/SimpleDataItem';
-import RememberingControlers from '@@/train/RememberingControlers';
+import Controlers from '@@/train/Controlers';
 import Status from '@@/train/Status';
 
 export default {
-  components: { SimpleDataItem, RememberingControlers, Status },
+  components: { SimpleDataItem, Controlers, Status },
   props: ['params'],
   data: () => ({
     word: 'Greatness',
