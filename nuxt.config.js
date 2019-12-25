@@ -1,3 +1,4 @@
+import path from 'path';
 import env from './.env';
 
 export default {
@@ -68,7 +69,9 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, { isDev, isClient }) {
+      config.resolve.alias['@@'] = path.resolve(__dirname, './components');
+    }
   },
 
   env

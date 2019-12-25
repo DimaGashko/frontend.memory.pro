@@ -1,8 +1,10 @@
 <template>
   <div>
+    <Setup v-if="step === 'setup'" />
+
     <Preparation
       :time="time"
-      v-if="step === 'preparation'"
+      v-else-if="step === 'preparation'"
       @done="preparationDone"
       title="Memorization starts in:"
       class="step"
@@ -12,7 +14,7 @@
 
     <Preparation
       :time="time"
-      v-if="step === 'recall-preparation'"
+      v-else-if="step === 'recall-preparation'"
       @done="preparationDone"
       title="Recall starts in:"
       class="step"
@@ -24,14 +26,16 @@
 
 <script>
 import { mapActions } from 'vuex';
-import splitAndFormatByTemplate from '../../assets/scripts/splitByTemplate';
 
-import Preparation from '@/components/training/Preparation';
-import Memorizing from '@/components/training/Memorizing';
-import Remembering from '@/components/training/Remembering';
+import Setup from '@@/training/Setup';
+import Preparation from '@@/training/Preparation';
+import Memorizing from '@@/training/Memorizing';
+import Remembering from '@@/training/Remembering';
+
+import splitAndFormatByTemplate from '@/assets/scripts/splitByTemplate';
 
 export default {
-  components: { Preparation, Memorizing, Remembering },
+  components: { Preparation, Memorizing, Remembering, Setup },
   data: () => ({
     step: 'setup',
     preparationTime: 90,

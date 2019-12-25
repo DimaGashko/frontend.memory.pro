@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import SimpleTimer from '@/components/helpers/SimpleTimer';
+import SimpleTimer from '@@/helpers/SimpleTimer';
 
 export default {
   components: { SimpleTimer },

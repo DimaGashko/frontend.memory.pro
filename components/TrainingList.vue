@@ -8,7 +8,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import TrainingPreviewCard from '@/components/TrainingPreviewCard';
+import TrainingPreviewCard from '@@/TrainingPreviewCard';
 
 export default {
   components: { TrainingPreviewCard },

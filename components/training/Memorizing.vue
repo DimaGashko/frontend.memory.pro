@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import SimpleDataItem from '@/components/training/SimpleDataItem';
-import RememberingControlers from '@/components/training/RememberingControlers';
-import Status from '@/components/training/Status';
+import SimpleDataItem from '@@/training/SimpleDataItem';
+import RememberingControlers from '@@/training/RememberingControlers';
+import Status from '@@/training/Status';
 
 export default {
   components: { SimpleDataItem, RememberingControlers, Status },

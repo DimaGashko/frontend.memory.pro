@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import TrainingList from '@/components/TrainingList';
+import TrainingList from '@@/TrainingList';
 
 export default {
   components: { TrainingList }
