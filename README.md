@@ -1,6 +1,6 @@
 # Memory.pro - Frontend
   
-![version](https://img.shields.io/badge/version-0.0.02%20(sketch)-red)
+![version](https://img.shields.io/badge/version-0.0.02%20(sketch)-145a46)
 
 > You're going to become a memory master!
 
@@ -8,6 +8,7 @@
 
 - JavaScript, Typescript
 - VueJs
+- Vuex
 - Nuxt.js
 - Nuxt Auth
 - Scss, html
