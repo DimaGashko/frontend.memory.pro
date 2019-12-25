@@ -1,24 +1,28 @@
 <template>
   <ul class="list">
     <li>
-      <b-button @click="prev" variant="primary" block size="lg"
-        >Prev (Enter)</b-button
-      >
+      <b-button @click="prev" variant="primary" block size="lg">
+        Prev
+        <span class="key-hint">(Enter)</span>
+      </b-button>
     </li>
     <li>
-      <b-button @click="next" variant="primary" block size="lg"
-        >Next (Space)</b-button
-      >
+      <b-button @click="next" variant="primary" block size="lg">
+        Next
+        <span class="key-hint">(Space)</span>
+      </b-button>
     </li>
     <li>
-      <b-button @click="toFirst" variant="primary" block size="lg"
-        >First (Shift + Enter)</b-button
-      >
+      <b-button @click="toFirst" variant="primary" block size="lg">
+        First
+        <span class="key-hint">(Shift + Enter)</span>
+      </b-button>
     </li>
     <li>
-      <b-button @click="finish" variant="primary" block size="lg"
-        >Finished (Shift + Space)</b-button
-      >
+      <b-button @click="finish" variant="primary" block size="lg">
+        Finished
+        <span class="key-hint">(Shift + Space)</span>
+      </b-button>
     </li>
   </ul>
 </template>
@@ -89,5 +93,13 @@ export default {
   display: grid;
   grid-template: '1fr 1fr';
   gap: 1em;
+}
+
+.key-hint {
+  display: none;
+
+  @media (min-width: 500px) {
+    display: inline-block;
+  }
 }
 </style>
