@@ -1,7 +1,12 @@
 <template>
   <div>
-    <Preparation v-if="step === 'preparation'" class="step" />
-    <Memorizing v-else />
+    <Preparation
+      :time="time"
+      v-if="step === 'preparation'"
+      @done="preparationDone"
+      class="step"
+    />
+    <Memorizing v-else-if="step === 'memorizing'" />
   </div>
 </template>
 
@@ -15,10 +20,14 @@ import Memorizing from '@/components/training/Memorizing';
 export default {
   components: { Preparation, Memorizing },
   data: () => ({
-    step: 'preparation'
+    step: 'preparation',
+    time: 2500
   }),
   computed: {},
   methods: {
+    preparationDone() {
+      this.step = 'memorizing';
+    },
     async get() {
       const words = await this.rand(100);
       window.w = words;

@@ -25,7 +25,7 @@ export default {
 
   css: ['assets/styles/index.scss', 'bootstrap-vue/dist/bootstrap-vue.css'],
 
-  plugins: ['plugins/bootstrap.js'],
+  plugins: ['plugins/bootstrap.js', 'plugins/filters.js'],
 
   buildModules: [
     '@nuxtjs/eslint-module'
