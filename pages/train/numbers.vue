@@ -12,7 +12,7 @@ export default {
   methods: {
     async get() {
       const numbers = await this.rand(100);
-      console.log(numbers);
+      console.log(splitAndFormatByTemplate('XX XXX XX', numbers));
 
       window.n = numbers;
       window.split = splitAndFormatByTemplate;

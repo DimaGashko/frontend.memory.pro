@@ -4,7 +4,7 @@
       <AppNavbar></AppNavbar>
     </header>
     <b-container class="app__container">
-      <nuxt />
+      <nuxt class="app__content" />
     </b-container>
   </div>
 </template>
@@ -30,6 +30,16 @@ export default {
 .app__container {
   flex: 1;
 
-  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.app__content {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 1rem;
 }
 </style>

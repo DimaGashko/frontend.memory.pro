@@ -1,8 +1,9 @@
 <template>
   <n-link
-    :to="data.path"
+    :to="path"
     :title="title"
     :aria-label="title"
+    :disabled="data.disabled"
     :class="{ 'training-card--disabled': data.disabled }"
     class="training-card"
   >
@@ -26,6 +27,9 @@ export default {
   computed: {
     title() {
       return this.data.disabled ? 'Not available' : '';
+    },
+    path() {
+      return !this.data.disabled ? this.data.path : '/train';
     }
   }
 };
