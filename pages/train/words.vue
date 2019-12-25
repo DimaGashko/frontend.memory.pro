@@ -20,8 +20,8 @@ import Memorizing from '@/components/training/Memorizing';
 export default {
   components: { Preparation, Memorizing },
   data: () => ({
-    step: 'preparation',
-    time: 2500
+    step: 'memorizing',
+    time: 66
   }),
   computed: {},
   methods: {
