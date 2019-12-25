@@ -4,7 +4,7 @@
       <Setup @done="$refs.train.$emit('setupDone')" />
     </template>
 
-    <template #memorization="params">
+    <template #memorization="{params}">
       <Memorizing
         :params="params"
         @done="$refs.train.$emit('memorizationDone')"

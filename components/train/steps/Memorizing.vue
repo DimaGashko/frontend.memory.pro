@@ -1,13 +1,13 @@
 <template>
   <div>
-    <SimpleDataItem :value="word" :even="even" />
-    <Status :cur="cur" class="status" total="50" />
+    <SimpleDataItem :value="item" :even="even" />
+    <Status :cur="index + 1" :total="data.length" class="status" />
     <Controlers
       @next="next"
       @prev="prev"
       @first="first"
-      @finish="finish"
-      auto-next="1000"
+      @finish="done"
+      :auto-next="params.autoNext"
       class="controls"
     />
 
@@ -24,41 +24,34 @@ export default {
   components: { SimpleDataItem, Controlers, Status },
   props: ['params'],
   data: () => ({
-    word: 'Greatness',
-    even: false,
-    cur: 0
+    index: 0,
+    cur: 0,
+    data: new Array(25).fill(0).map(_ => 10 + Math.round(Math.random() * 90))
   }),
-  created() {
-    const words = [
-      '43     444    23',
-      '11     444    44',
-      '33     333    33',
-      '23     775    77',
-      '33     222    666'
-    ];
-    let i = 0;
-    const timer = setInterval(() => {
-      this.cur++;
-      this.word = words[i % words.length];
-      this.even = i % 2 === 0;
-      if (i === words.length) {
-        clearInterval(timer);
-        this.$emit('done');
-      }
-      i++;
-    }, 1000);
+  computed: {
+    item() {
+      return this.data[this.index];
+    },
+    even() {
+      return this.index % 2 === 0;
+    }
   },
   methods: {
     prev() {
-      console.log('prev');
+      if (this.index > 0) this.index--;
     },
     next() {
-      console.log('next');
+      if (this.index >= this.data.length - 1) {
+        this.done();
+        return;
+      }
+
+      this.index++;
     },
     first() {
-      console.log('first');
+      this.index = 0;
     },
-    finish() {
+    done() {
       console.log('finished');
     }
   }

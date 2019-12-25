@@ -64,8 +64,8 @@ export default {
       this.step = 'memorizing';
     },
     memorizationDone() {
-      this.step =
-        this.recallPreparationTime > 0 ? 'recall-preparation' : 'recall';
+      // this.step =
+      //   this.recallPreparationTime > 0 ? 'recall-preparation' : 'recall';
     },
     recallPreparationDone() {
       this.step = 'recall';
