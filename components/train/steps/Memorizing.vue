@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SimpleDataItem :value="item" :even="even" />
+    <TextItem :value="item" :even="even" />
     <Status :cur="index + 1" :total="data.length" class="status" />
     <Control
       ref="control"
@@ -15,12 +15,12 @@
 </template>
 
 <script>
-import SimpleDataItem from '@@/train/SimpleDataItem';
+import TextItem from '@@/train/TextItem';
 import Control from '@@/train/Control';
 import Status from '@@/train/Status';
 
 export default {
-  components: { SimpleDataItem, Control, Status },
+  components: { TextItem, Control, Status },
   props: ['params'],
   data: () => ({
     index: 0,
