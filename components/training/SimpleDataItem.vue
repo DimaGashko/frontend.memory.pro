@@ -1,5 +1,5 @@
 <template>
-  <pre :class="{ 'word--eve': even }" class="word">{{ value }}</pre>
+  <p :class="{ 'word--even': even }" class="word">{{ value }}</p>
 </template>
 
 <script>
@@ -11,7 +11,7 @@ export default {
 <style lang="scss" scoped>
 .word {
   margin: 0;
-  padding: 1em 0;
+  padding: 1.5em 0;
 
   font-size: 72px;
   text-align: center;

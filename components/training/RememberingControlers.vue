@@ -61,7 +61,7 @@ export default {
       } else if (action === 'next') this.next();
       else if (action === 'prev') this.prev();
     },
-    atartAutoNext() {
+    startAutoNext() {
       this.stopAutoNext();
 
       this.timer = setInterval(() => {

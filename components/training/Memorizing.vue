@@ -1,12 +1,13 @@
 <template>
   <div>
     <SimpleDataItem :value="word" :even="even" />
-    <Status class="status" cur="43" total="100" />
+    <Status :cur="cur" class="status" total="100" />
     <RememberingControlers
       @next="next"
       @prev="prev"
       @first="first"
       @finish="finish"
+      auto-next="1000"
       class="controls"
     />
   </div>
@@ -21,7 +22,8 @@ export default {
   components: { SimpleDataItem, RememberingControlers, Status },
   data: () => ({
     word: 'Greatness',
-    even: false
+    even: false,
+    cur: 0
   }),
   created() {
     const words = [
@@ -33,10 +35,11 @@ export default {
     ];
     let i = 0;
     setInterval(() => {
+      this.cur++;
       this.word = words[i % words.length];
       this.even = i % 2 === 0;
       i++;
-    }, 500);
+    }, 1000);
   },
   methods: {
     prev() {
