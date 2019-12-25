@@ -21,16 +21,18 @@
     />
 
     <Remembering v-else-if="step === 'rememmbering'" class="step" />
+
+    <Result v-else-if="step === 'result'" />
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
 
-import Setup from '@@/training/Setup';
-import Preparation from '@@/training/Preparation';
-import Memorizing from '@@/training/Memorizing';
-import Remembering from '@@/training/Remembering';
+import Setup from '@@/train/steps/Setup';
+import Preparation from '@@/train/steps/Preparation';
+import Memorizing from '@@/train/steps/Memorizing';
+import Remembering from '@@/train/steps/Remembering';
 
 import splitAndFormatByTemplate from '@/assets/scripts/splitByTemplate';
 
