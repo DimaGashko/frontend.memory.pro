@@ -34,10 +34,14 @@ export default {
       '33     222    666'
     ];
     let i = 0;
-    setInterval(() => {
+    const timer = setInterval(() => {
       this.cur++;
       this.word = words[i % words.length];
       this.even = i % 2 === 0;
+      if (i === words.length) {
+        clearInterval(timer);
+        this.$emit('done');
+      }
       i++;
     }, 1000);
   },

@@ -1,19 +1,19 @@
 <template>
   <Training>
-    <template #setup="done">
-      <Setup @done="done" />
+    <template #setup>
+      <Setup @done="$parent.setupDone" />
     </template>
 
-    <template #memorization="done">
+    <template #memorization>
       <Memorizing @done="done" />
     </template>
 
     <template #recall>
-      <Recall />
+      <Recall @done="done" />
     </template>
 
     <template #results>
-      <Results />
+      <Results @done="done" />
     </template>
   </Training>
 </template>

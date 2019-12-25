@@ -1,6 +1,6 @@
 <template>
   <div>
-    <slot :done="setupDone" v-if="step === 'setup'" name="setup"></slot>
+    <slot :done="() => setupDone()" v-if="step === 'setup'" name="setup"></slot>
 
     <slot
       :done="preparationDone"
@@ -46,26 +46,28 @@ import Preparation from '@@/train/steps/Preparation';
 export default {
   components: { Preparation },
   data: () => ({
-    step: 'results',
+    step: 'setup',
+
     preparationTime: 90,
     recallPreparationTime: 30
   }),
   computed: {},
   methods: {
     setupDone() {
-      console.log('setup done');
+      // this.step = this.preparationTime > 0 ? 'preparation' : 'memorizing';
     },
     preparationDone() {
-      this.step = 'memorizing done';
+      this.step = 'memorizing';
     },
     memorizationDone() {
-      console.log('memorization done');
+      this.step =
+        this.recallPreparationTime > 0 ? 'recall-preparation' : 'recall';
     },
     recallPreparationDone() {
-      console.log('recall preparation done');
+      this.step = 'recall';
     },
     recallDone() {
-      console.log('recall done');
+      this.step = 'results';
     }
   }
 };

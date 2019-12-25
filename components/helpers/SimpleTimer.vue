@@ -11,7 +11,7 @@ export default {
     updateInterval: 250,
     startAt: 0
   }),
-  created() {
+  mounted() {
     this.start();
   },
   methods: {

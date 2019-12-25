@@ -11,9 +11,11 @@
 
 <script>
 export default {
-  data: () => ({
-    data: []
-  })
+  mounted() {
+    setTimeout(() => {
+      this.$emit('done');
+    }, 2000);
+  }
 };
 </script>
 
