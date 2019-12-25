@@ -10,6 +10,8 @@
       auto-next="1000"
       class="controls"
     />
+
+    <p>{{ params }}</p>
   </div>
 </template>
 
@@ -20,6 +22,7 @@ import Status from '@@/train/Status';
 
 export default {
   components: { SimpleDataItem, RememberingControlers, Status },
+  props: ['params'],
   data: () => ({
     word: 'Greatness',
     even: false,

@@ -4,18 +4,22 @@
 
     <slot v-else-if="step === 'preparation'" name="preparation">
       <Preparation
-        :time="preparationTime"
+        :time="params.preparationTime"
         @done="preparationDone"
         title="Memorization starts in:"
         class="step"
       />
     </slot>
 
-    <slot v-else-if="step === 'memorizing'" name="memorization"></slot>
+    <slot
+      :params="params"
+      v-else-if="step === 'memorizing'"
+      name="memorization"
+    ></slot>
 
     <slot v-else-if="step === 'recall-preparation'" name="recall-preparation">
       <Preparation
-        :time="recallPreparationTime"
+        :time="params.recallPreparationTime"
         @done="recallPreparationDone"
         title="Recall starts in:"
         class="step"
@@ -37,15 +41,23 @@ export default {
   data: () => ({
     step: 'setup',
 
-    preparationTime: 10,
-    recallPreparationTime: 5
+    defaultParams: {
+      preparationTime: 10,
+      recallPreparationTime: 5,
+      autoNext: 0,
+      item: 0
+    },
+
+    params: {}
   }),
   computed: {},
   mounted() {
+    this.params = { ...this.defaultParams };
     this.initEvents();
   },
   methods: {
-    setupDone() {
+    setupDone(params) {
+      this.params = { ...this.defaultParams, ...params };
       this.step = this.preparationTime > 0 ? 'preparation' : 'memorizing';
     },
     preparationDone() {
@@ -62,7 +74,7 @@ export default {
       this.step = 'results';
     },
     initEvents() {
-      this.$on('setupDone', () => this.setupDone());
+      this.$on('setupDone', (...args) => this.setupDone(...args));
       this.$on('preparationDone', () => this.preparationDone());
       this.$on('memorizationDone', () => this.memorizationDone());
       this.$on('recallPreparationDone', () => this.recallPreparationDone());
