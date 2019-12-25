@@ -3,7 +3,7 @@
     <b-navbar toggleable="lg" type="dark" variant="primary">
       <b-navbar-brand to="/">
         <img
-          src="/logo/logo-white.svg"
+          src="/img/logo/logo-white.svg"
           width="32"
           class="d-inline-block align-top mr-1"
           alt="Memory.pro"

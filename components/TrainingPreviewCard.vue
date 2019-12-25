@@ -3,8 +3,7 @@
     :to="path"
     :title="title"
     :aria-label="title"
-    :disabled="data.disabled"
-    :class="{ 'training-card--disabled': data.disabled }"
+    :class="{ 'training-card--disabled': !data.available }"
     class="training-card"
   >
     <b-card
@@ -26,10 +25,10 @@ export default {
   props: ['data'],
   computed: {
     title() {
-      return this.data.disabled ? 'Not available' : '';
+      return this.data.available ? this.data.description : 'Not available';
     },
     path() {
-      return !this.data.disabled ? this.data.path : '/train';
+      return this.data.available ? this.data.path : '/train';
     }
   }
 };
