@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div v-if="user.id">
     <h1>
-      <span v-if="own">Hello, </span> {{ $auth.user.first_name }}
-      {{ $auth.user.last_name }}
+      <span v-if="own">Hello, </span> {{ user.first_name }}
+      {{ user.last_name }}
     </h1>
 
     <ul class="data-list">
@@ -16,7 +16,7 @@
     </ul>
 
     <h2 class="mt-3">Last activity</h2>
-    <ResultsList :user-id="$auth.user.id" class="mb-5" limit="3" />
+    <ResultsList :user-id="user.id" class="mb-5" limit="3" />
   </div>
 </template>
 

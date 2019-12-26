@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <h1>Users</h1>
+    <h1 class="mb-3">Users</h1>
 
-    <b-table :items="users" :fields="fields" striped hover>
+    <b-table :items="users" :fields="fields" class="mb-5" striped hover>
       <template #cell(username)="{item: {username}}">
         <n-link :to="'/users/' + username"> {{ username }} </n-link>
       </template>
