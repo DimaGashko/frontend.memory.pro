@@ -7,10 +7,12 @@
 
     <ul class="data-list">
       <li class="data-list__item">Username: {{ user.username }}</li>
-      <li class="data-list__item">Email: {{ user.email || hidden }}</li>
+      <li v-if="user.email" class="data-list__item">Email: {{ user.email }}</li>
       <li class="data-list__item">First name: {{ user.first_name }}</li>
       <li class="data-list__item">Last name: {{ user.last_name }}</li>
-      <li class="data-list__item">Birth Date: {{ user.birth || hidden }}</li>
+      <li v-if="user.birth" class="data-list__item">
+        Birth Date: {{ user.birth }}
+      </li>
     </ul>
 
     <h2 class="mt-3">Last activity</h2>
@@ -27,8 +29,7 @@ export default {
   components: { ResultsList },
   data: () => ({
     user: {},
-    own: false,
-    hidden: '<hidden>'
+    own: false
   }),
   async created() {
     this.user = await this.loadUser();
