@@ -1,16 +1,11 @@
-import {
-  processRequestError,
-  removeAuthHeader
-} from '~/assets/scripts/utils.ts';
+import { processRequestError } from '~/assets/scripts/utils.ts';
 
 export const state = () => ({});
 
 export const actions = {
   async fetchUser(_, username) {
     try {
-      return await this.$axios.$get(`/users/${username}`, {
-        transformRequest: [removeAuthHeader]
-      });
+      return await this.$axios.$get(`/users/${username}`);
     } catch (e) {
       processRequestError(e);
     }

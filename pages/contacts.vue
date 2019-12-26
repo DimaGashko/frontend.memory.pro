@@ -5,11 +5,18 @@
     <ul>
       <li>
         Developer:
-        <a href="https://github.com/DimaGashko">github.com/DimaGashko</a>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/DimaGashko"
+          >github.com/DimaGashko</a
+        >
       </li>
       <li>
         GitHub Repo:
-        <a href="https://github.com/DimaGashko/frontend.memory.pro"
+        <a
+          rel="noopener noreferrer"
+          href="https://github.com/DimaGashko/frontend.memory.pro"
           >github.com/../frontend.memory.pro</a
         >
       </li>

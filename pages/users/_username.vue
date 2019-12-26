@@ -12,13 +12,19 @@
       <li class="data-list__item">Last name: {{ user.last_name }}</li>
       <li class="data-list__item">Birth Date: {{ user.birth || hidden }}</li>
     </ul>
+
+    <h2 class="mt-3">Last activity</h2>
+    <ResultsList :user-id="$auth.user.id" class="mb-5" limit="3" />
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
 
+import ResultsList from '@@/ResultsList';
+
 export default {
+  components: { ResultsList },
   data: () => ({
     user: {},
     own: false,
