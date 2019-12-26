@@ -70,15 +70,15 @@ export default {
 
       this.times[this.index] += diff;
 
+      if (value > this.data.length - 1) {
+        value = this.data.length - 1;
+        this.done();
+      }
+
       this.showAt = now;
       this.index = value;
 
       this.$refs.controls.restartAutoNext();
-
-      if (value > this.data.length - 1) {
-        value = this.data.length - 1;
-        // this.done();
-      }
     }
   }
 };
