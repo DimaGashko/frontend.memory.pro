@@ -15,14 +15,21 @@ import RecallItem from '@@/train/RecallItem';
 export default {
   components: { RecallItem },
   props: ['len'],
+  data: () => ({
+    startAt: 0
+  }),
   computed: {
     answers() {
       return this.$refs.items.map(item => item.value);
     }
   },
+  created() {
+    this.startAt = Date.now();
+  },
   methods: {
     done() {
-      this.$emit('done', this.answers);
+      const time = Date.now() - this.startAt;
+      this.$emit('done', this.answers, time);
     }
   }
 };
