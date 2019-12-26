@@ -61,16 +61,21 @@ export default {
     }
   },
   methods: {
-    setupDone({ len, template, autoNext, preparation, recallPreparation }) {
-      this.step = this.preparation > 0 ? 'preparation' : 'memorization';
-
+    async setupDone({
+      len,
+      template,
+      autoNext,
+      preparation,
+      recallPreparation
+    }) {
       this.len = len;
       this.template = template;
       this.autoNext = autoNext;
       this.preparation = preparation;
       this.recallPreparation = recallPreparation;
 
-      this.fetchData();
+      await this.fetchData();
+      this.step = this.preparation > 0 ? 'preparation' : 'memorization';
     },
     memorizationDone(times) {
       this.step = this.recallPreparation > 0 ? 'recallPreparation' : 'recall';

@@ -41,7 +41,7 @@ export default {
   }),
   mounted() {
     document.addEventListener('keyup', this.keyEvent);
-    if (this.autoNext > 0) this.startAutoNext();
+    this.startAutoNext();
   },
   destroyed() {
     document.removeEventListener('keyup', this.keyEvent);
@@ -83,6 +83,7 @@ export default {
       event.preventDefault();
     },
     startAutoNext() {
+      if (this.autoNext <= 0) return;
       this.stopAutoNext();
 
       this.timer = setInterval(() => {
