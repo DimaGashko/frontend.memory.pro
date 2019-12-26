@@ -29,8 +29,6 @@
     />
 
     <Recall v-else-if="step === 'recall'" @done="recallDone" />
-
-    <Results v-else-if="ster === 'results'" />
   </div>
 </template>
 
@@ -41,12 +39,11 @@ import Setup from '@@/train/steps/Setup';
 import Preparation from '@@/train/steps/Preparation';
 import Memorization from '@@/train/steps/Memorization';
 import Recall from '@@/train/steps/Recall';
-import Results from '@@/train/steps/Results';
 
 import TextItem from '@@/train/TextItem';
 
 export default {
-  components: { Setup, Preparation, Memorization, Recall, Results, TextItem },
+  components: { Setup, Preparation, Memorization, Recall, TextItem },
   data: () => ({
     words: [],
     step: 'setup',
@@ -61,10 +58,10 @@ export default {
     setupDone() {
       this.step = this.preparation > 0 ? 'preparation' : 'memorization';
     },
-    memorizationDone() {
+    memorizationDone(times) {
       this.step = this.recallPreparation > 0 ? 'recallPreparation' : 'recall';
     },
-    recallDone() {
+    recallDone(answers) {
       this.step = 'results';
     },
     ...mapActions({

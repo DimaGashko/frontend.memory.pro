@@ -10,7 +10,7 @@
       @prev="prev"
       @first="first"
       @finish="done"
-      :auto-next="params.autoNext"
+      :auto-next="autoNext"
       class="controls"
     />
   </div>
@@ -23,7 +23,7 @@ import Status from '@@/train/Status';
 
 export default {
   components: { TextItem, Controls, Status },
-  props: ['params', 'data'],
+  props: ['autoNext', 'data'],
   data: () => ({
     index: 0,
     startedAt: null,

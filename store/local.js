@@ -38,7 +38,7 @@ export const state = () => ({
     {
       name: 'Binary digits',
       path: '/train/binary',
-      description: 'Memorize binary numbers',
+      description: 'Memorize binary digits',
       image: '/img/train-preview/binary.jpg',
       available: false
     },
