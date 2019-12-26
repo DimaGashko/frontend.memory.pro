@@ -26,7 +26,7 @@
       />
     </slot>
 
-    <slot :done="recallDone" v-else-if="step === 'recall'" name="recall"></slot>
+    <slot v-else-if="step === 'recall'" name="recall"></slot>
 
     <slot v-else-if="step === 'results'" name="results"></slot>
   </div>

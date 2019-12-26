@@ -9,7 +9,11 @@
         :params="params"
         :data="words"
         @done="$refs.train.$emit('memorizationDone')"
-      />
+      >
+        <template #item="{item, even}">
+          <TextItem :value="item" :even="even" size="72" />
+        </template>
+      </Memorizing>
     </template>
 
     <template #recall>
@@ -32,8 +36,10 @@ import Memorizing from '@@/train/steps/Memorizing';
 import Recall from '@@/train/steps/Recall';
 import Results from '@@/train/steps/Results';
 
+import TextItem from '@@/train/TextItem';
+
 export default {
-  components: { Memorizing, Recall, Setup, Results, Training },
+  components: { Memorizing, Recall, Setup, Results, Training, TextItem },
   data: () => ({
     words: []
   }),

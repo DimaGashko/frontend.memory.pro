@@ -1,6 +1,8 @@
 <template>
   <div>
-    <TextItem :value="item" :even="even" />
+    <slot :item="item" :even="even" name="item">
+      <TextItem :value="item" :even="even" />
+    </slot>
     <Status :cur="index + 1" :total="data.length" class="status" />
     <Controls
       ref="controls"

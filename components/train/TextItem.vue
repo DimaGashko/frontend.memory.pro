@@ -1,7 +1,7 @@
 <template>
   <p
     :class="{ 'word--even': even }"
-    :style="{ '--size': size2 + 'px' }"
+    :style="{ '--size': size + 'px' }"
     class="word"
   >
     {{ value }}
@@ -10,29 +10,7 @@
 
 <script>
 export default {
-  props: ['value', 'even'],
-  data: () => ({
-    size: 72
-  }),
-  computed: {
-    size2() {
-      return this.calculateSize();
-    }
-  },
-  created() {
-    this.size = this.calculateSize();
-  },
-  methods: {
-    calculateSize(value) {
-      const len = ('' + this.value).length;
-
-      if (len < 3) return 200;
-      if (len < 10) return 150;
-      if (len < 20) return 72;
-
-      return 50;
-    }
-  }
+  props: ['value', 'even', 'size']
 };
 </script>
 
