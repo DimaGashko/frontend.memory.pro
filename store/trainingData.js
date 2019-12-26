@@ -8,7 +8,7 @@ export const state = () => ({});
 export const actions = {
   async randWords(_, number) {
     try {
-      return await this.$axios.$get(`/words/rand/${number}`, {
+      return await this.$axios.$get(`/rand/words/${number}`, {
         transformRequest: [removeAuthHeader]
       });
     } catch (e) {
@@ -17,7 +17,7 @@ export const actions = {
   },
   async randImages(_, number) {
     try {
-      return await this.$axios.$get(`/images/rand/${number}`, {
+      return await this.$axios.$get(`/rand/images/${number}`, {
         transformRequest: [removeAuthHeader]
       });
     } catch (e) {
