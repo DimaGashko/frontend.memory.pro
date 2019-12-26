@@ -5,14 +5,18 @@
 
     <h2 class="mb-4">Let's Training</h2>
     <TrainingList available="true" />
+
+    <h2 class="mt-4">Last activity</h2>
+    <ResultsList limit="3" class="mt-4" />
   </div>
 </template>
 
 <script>
 import TrainingList from '@@/TrainingList';
+import ResultsList from '@@/ResultsList';
 
 export default {
-  components: { TrainingList }
+  components: { TrainingList, ResultsList }
 };
 </script>
 

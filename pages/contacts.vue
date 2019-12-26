@@ -7,6 +7,12 @@
         Developer:
         <a href="https://github.com/DimaGashko">github.com/DimaGashko</a>
       </li>
+      <li>
+        GitHub Repo:
+        <a href="https://github.com/DimaGashko/frontend.memory.pro"
+          >github.com/../frontend.memory.pro</a
+        >
+      </li>
     </ul>
   </div>
 </template>

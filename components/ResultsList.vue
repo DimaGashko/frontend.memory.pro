@@ -1,7 +1,7 @@
 <template>
   <div class="root">
     <div class="group">
-      <h2>Numbers Results</h2>
+      <h3>Numbers Results</h3>
       <b-table
         :items="numbersResults"
         :fields="numbersResultsFields"
@@ -21,7 +21,7 @@
     </div>
 
     <div class="group">
-      <h2>Words Results</h2>
+      <h3>Words Results</h3>
       <b-table :items="wordsResults" :fields="wordsResultsFields" striped hover>
         <template #cell(id)="{item}">
           <n-link :to="'/results/words/' + item.id">{{ item.id }}</n-link>
@@ -36,7 +36,7 @@
     </div>
 
     <div class="group">
-      <h2>Images Results</h2>
+      <h3>Images Results</h3>
       <b-table
         :items="imagesResults"
         :fields="imagesResultsFields"
@@ -104,19 +104,22 @@ export default {
   },
   methods: {
     async fetchNumbers() {
-      this.numbersResults = await this.fetchNumbersResults(
-        this.userId,
-        this.limit
-      );
+      this.numbersResults = await this.fetchNumbersResults({
+        user_id: this.userId,
+        limit: this.limit
+      });
     },
     async fetchWords() {
-      this.wordsResults = await this.fetchWordsResults(this.userId, this.limit);
+      this.wordsResults = await this.fetchWordsResults({
+        user_id: this.userId,
+        limit: this.limit
+      });
     },
     async fetchImages() {
-      this.imagesResults = await this.fetchImagesResults(
-        this.userId,
-        this.limit
-      );
+      this.imagesResults = await this.fetchImagesResults({
+        user_id: this.userId,
+        limit: this.limit
+      });
     },
     ...mapActions({
       fetchNumbersResults: 'results/userNumbersResults',
