@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div>
+  <div class="root">
+    <div class="group">
       <h2>Numbers Results</h2>
       <b-table
         :items="numbersResults"
@@ -14,7 +14,7 @@
       </b-table>
     </div>
 
-    <div>
+    <div class="group">
       <h2>Words Results</h2>
       <b-table :items="wordsResults" :fields="wordsResultsFields" striped hover>
         <template #cell(id)="{item}">
@@ -23,7 +23,7 @@
       </b-table>
     </div>
 
-    <div>
+    <div class="group">
       <h2>Images Results</h2>
       <b-table
         :items="imagesResults"
@@ -74,12 +74,18 @@ export default {
     ]
   }),
   created() {
-    this.fetchData();
+    this.fetchNumbers();
+    this.fetchWords();
+    this.fetchImages();
   },
   methods: {
-    async fetchData() {
+    async fetchNumbers() {
       this.numbersResults = await this.fetchNumbersResults(this.userId);
+    },
+    async fetchWords() {
       this.wordsResults = await this.fetchWordsResults(this.userId);
+    },
+    async fetchImages() {
       this.imagesResults = await this.fetchImagesResults(this.userId);
     },
     ...mapActions({
@@ -90,3 +96,13 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.root {
+  margin-bottom: 64px;
+}
+
+.group {
+  margin-top: 20px;
+}
+</style>
