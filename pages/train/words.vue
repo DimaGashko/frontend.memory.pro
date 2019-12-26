@@ -34,6 +34,7 @@
 
 <script>
 import { mapActions } from 'vuex';
+import chunk from 'lodash/chunk';
 
 import Setup from '@@/train/steps/Setup';
 import Preparation from '@@/train/steps/Preparation';
@@ -42,24 +43,22 @@ import Recall from '@@/train/steps/Recall';
 
 import TextItem from '@@/train/TextItem';
 
+import splitAndFormatByTemplate from '../../assets/scripts/splitByTemplate';
+
 export default {
   components: { Setup, Preparation, Memorization, Recall, TextItem },
   data: () => ({
-    rawWords: [],
-    time: [],
+    words: [],
+    ids: [],
+    times: [],
     answers: [],
     step: 'setup',
     preparation: 10,
     recallPreparation: 5,
     autoNext: 2000,
-    templat: '',
+    template: '',
     len: 0
   }),
-  computed: {
-    words() {
-      return this.rawWords.map(w => w.value);
-    }
-  },
   methods: {
     async setupDone({
       len,
@@ -84,9 +83,30 @@ export default {
     recallDone(answers) {
       this.step = 'results';
       this.answers = answers;
+
+      this.done();
     },
     async fetchData() {
-      this.rawWords = await this.rand(this.len);
+      const rawWords = await this.rand(this.len);
+      const words = rawWords.map(w => w.value);
+      const ids = rawWords.map(w => w.id);
+      const itemSize = this.template.split('X').length - 1;
+
+      this.ids = chunk(ids, itemSize);
+      this.words = splitAndFormatByTemplate(this.template, words);
+    },
+    done() {
+      const resultsData = this.ids.map((ids, itemIndex) => {
+        return {
+          time: this.times[itemIndex],
+          data: ids.map((id, dataIndex) => ({
+            correct: id
+            // actual: this.answers[itemIndex][dataIndex]
+          }))
+        };
+      });
+
+      console.log(resultsData);
     },
     ...mapActions({
       rand: 'trainingData/randWords'
