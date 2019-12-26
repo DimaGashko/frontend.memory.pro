@@ -2,15 +2,15 @@
   <div>
     <h1>Performance</h1>
 
-    <UserStatistics :user-id="$auth.user.id" class="mt-3" />
+    <ResultsList :user-id="$auth.user.id" limit="20" class="mt-3" />
   </div>
 </template>
 
 <script>
-import UserStatistics from '@@/UserStatistics';
+import ResultsList from '@@/ResultsList';
 
 export default {
-  components: { UserStatistics },
+  components: { ResultsList },
   middleware: 'auth'
 };
 </script>
