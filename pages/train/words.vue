@@ -28,7 +28,7 @@
       class="step"
     />
 
-    <Recall v-else-if="step === 'recall'" @done="recallDone" />
+    <Recall :len="len" v-else-if="step === 'recall'" @done="recallDone" />
   </div>
 </template>
 
@@ -57,7 +57,8 @@ export default {
     recallPreparation: 5,
     autoNext: 2000,
     template: '',
-    len: 0
+    len: 0,
+    itemSize: 0
   }),
   methods: {
     async setupDone({
@@ -82,7 +83,7 @@ export default {
     },
     recallDone(answers) {
       this.step = 'results';
-      this.answers = answers;
+      this.answers = chunk(answers, this.itemSize);
 
       this.done();
     },
@@ -90,9 +91,9 @@ export default {
       const rawWords = await this.rand(this.len);
       const words = rawWords.map(w => w.value);
       const ids = rawWords.map(w => w.id);
-      const itemSize = this.template.split('X').length - 1;
+      this.itemSize = this.template.split('X').length - 1;
 
-      this.ids = chunk(ids, itemSize);
+      this.ids = chunk(ids, this.itemSize);
       this.words = splitAndFormatByTemplate(this.template, words);
     },
     done() {
@@ -100,8 +101,8 @@ export default {
         return {
           time: this.times[itemIndex],
           data: ids.map((id, dataIndex) => ({
-            correct: id
-            // actual: this.answers[itemIndex][dataIndex]
+            correct: id,
+            actual: this.answers[itemIndex][dataIndex]
           }))
         };
       });
