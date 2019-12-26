@@ -1,7 +1,7 @@
 <template>
   <p
     :class="{ 'word--even': even }"
-    :style="{ '--size': size + 'px' }"
+    :style="{ '--size': (size || 72) + 'px' }"
     class="word"
   >
     {{ value }}
