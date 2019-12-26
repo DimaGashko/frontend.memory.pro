@@ -11,6 +11,12 @@
         <template #cell(id)="{item}">
           <n-link :to="'/results/numbers/' + item.id">{{ item.id }}</n-link>
         </template>
+
+        <template #cell(user)="{item: {user}}">
+          <n-link :to="'/users/' + (user ? user.username : '')">
+            {{ user ? user.username : 'Guest' }}
+          </n-link>
+        </template>
       </b-table>
     </div>
 
@@ -19,6 +25,12 @@
       <b-table :items="wordsResults" :fields="wordsResultsFields" striped hover>
         <template #cell(id)="{item}">
           <n-link :to="'/results/words/' + item.id">{{ item.id }}</n-link>
+        </template>
+
+        <template #cell(user)="{item: {user}}">
+          <n-link :to="'/users/' + (user ? user.username : '')">
+            {{ user ? user.username : 'Guest' }}
+          </n-link>
         </template>
       </b-table>
     </div>
@@ -34,6 +46,12 @@
         <template #cell(id)="{item}">
           <n-link :to="'/results/images/' + item.id">{{ item.id }}</n-link>
         </template>
+
+        <template #cell(user)="{item: {user}}">
+          <n-link :to="'/users/' + (user ? user.username : '')">
+            {{ user ? user.username : 'Guest' }}
+          </n-link>
+        </template>
       </b-table>
     </div>
   </div>
@@ -43,34 +61,40 @@
 import { mapActions } from 'vuex';
 
 export default {
-  props: ['userId'],
+  props: ['userId', 'limit'],
   data: () => ({
     wordsResults: [],
     numbersResults: [],
     imagesResults: [],
     numbersResultsFields: [
       { key: 'id', sortable: true },
+      { key: 'user', sortable: true },
       { key: 'start_at', sortable: true },
       { key: 'preparation_time', sortable: true },
       { key: 'recall_preparation_time', sortable: true },
       { key: 'recall_time', sortable: true },
-      { key: 'template', sortable: true }
+      { key: 'template', sortable: true },
+      { key: 'grade', sortable: true }
     ],
     wordsResultsFields: [
       { key: 'id', sortable: true },
+      { key: 'user', sortable: true },
       { key: 'start_at', sortable: true },
       { key: 'preparation_time', sortable: true },
       { key: 'recall_preparation_time', sortable: true },
       { key: 'recall_time', sortable: true },
-      { key: 'item_size', sortable: true }
+      { key: 'template', sortable: true },
+      { key: 'grade', sortable: true }
     ],
     imagesResultsFields: [
       { key: 'id', sortable: true },
+      { key: 'user', sortable: true },
       { key: 'start_at', sortable: true },
       { key: 'preparation_time', sortable: true },
       { key: 'recall_preparation_time', sortable: true },
       { key: 'recall_time', sortable: true },
-      { key: 'template', sortable: true }
+      { key: 'items_size', sortable: true },
+      { key: 'grade', sortable: true }
     ]
   }),
   created() {
@@ -80,13 +104,19 @@ export default {
   },
   methods: {
     async fetchNumbers() {
-      this.numbersResults = await this.fetchNumbersResults(this.userId);
+      this.numbersResults = await this.fetchNumbersResults(
+        this.userId,
+        this.limit
+      );
     },
     async fetchWords() {
-      this.wordsResults = await this.fetchWordsResults(this.userId);
+      this.wordsResults = await this.fetchWordsResults(this.userId, this.limit);
     },
     async fetchImages() {
-      this.imagesResults = await this.fetchImagesResults(this.userId);
+      this.imagesResults = await this.fetchImagesResults(
+        this.userId,
+        this.limit
+      );
     },
     ...mapActions({
       fetchNumbersResults: 'results/userNumbersResults',
