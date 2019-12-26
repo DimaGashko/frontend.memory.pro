@@ -2,7 +2,7 @@
   <div>
     <h1>Performance</h1>
 
-    <UserStatistics class="mt-3" />
+    <UserStatistics :user-id="$auth.user.id" class="mt-3" />
   </div>
 </template>
 
