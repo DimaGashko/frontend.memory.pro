@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     async fetchData() {
-      this.wordsResults = await this.fetchWordsResults();
+      this.wordsResults = await this.fetchWordsResults(this.userId);
     },
     ...mapActions({
       fetchWordsResults: 'results/userWordsResults'
