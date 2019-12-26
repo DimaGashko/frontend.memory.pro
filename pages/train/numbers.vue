@@ -1,58 +1,21 @@
 <template>
-  <Training ref="train">
-    <template #setup>
-      <Setup @done="$refs.train.$emit('setupDone')" />
-    </template>
-
-    <template #memorization="{params}">
-      <Memorizing :params="params" :data="words" @done="memorizingDone">
-        <template #item="{item, even}">
-          <TextItem :value="item" :even="even" size="200" />
-        </template>
-      </Memorizing>
-    </template>
-
-    <template #recall>
-      <Recall @done="$refs.train.$emit('recallDone')" />
-    </template>
-
-    <template #results>
-      <Results />
-    </template>
-  </Training>
+  <div>
+    <h1 @click="get">Numbers</h1>
+  </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
-
-import Training from '@@/train/Training';
-
-import Setup from '@@/train/steps/Setup';
-import Memorizing from '@@/train/steps/Memorizing';
-import Recall from '@@/train/steps/Recall';
-import Results from '@@/train/steps/Results';
-
-import TextItem from '@@/train/TextItem';
 import splitAndFormatByTemplate from '../../assets/scripts/splitByTemplate';
 
 export default {
-  components: { Memorizing, Recall, Setup, Results, Training, TextItem },
-  data: () => ({
-    words: [],
-    times: []
-  }),
-  async created() {
-    this.words = splitAndFormatByTemplate('XX - XX', await this.get(100));
-  },
   methods: {
-    get(n) {
-      return this.rand(n);
-    },
-    memorizingDone(times) {
-      this.$refs.train.$emit('memorizationDone');
-      this.times = times;
-      console.log(times);
-      console.log(this.$refs.train);
+    async get() {
+      const numbers = await this.rand(100);
+      console.log(splitAndFormatByTemplate('XX XXX XX', numbers));
+
+      window.n = numbers;
+      window.split = splitAndFormatByTemplate;
     },
     ...mapActions({
       rand: 'trainingData/randNumbers'
@@ -61,8 +24,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.step {
-  flex: 1;
-}
-</style>
+<style></style>

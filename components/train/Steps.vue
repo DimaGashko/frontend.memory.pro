@@ -59,6 +59,7 @@ export default {
     setupDone(params) {
       this.params = { ...this.defaultParams, ...params };
       this.step = this.preparationTime > 0 ? 'preparation' : 'memorizing';
+      console.log(this.$slots);
     },
     preparationDone() {
       this.step = 'memorizing';

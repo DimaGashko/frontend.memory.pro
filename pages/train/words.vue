@@ -1,54 +1,71 @@
 <template>
-  <Training ref="train">
-    <template #setup>
-      <Setup @done="$refs.train.$emit('setupDone')" />
-    </template>
+  <div>
+    <Setup v-if="step === 'setup'" @done="setupDone" />
 
-    <template #memorization="{params}">
-      <Memorizing
-        :params="params"
-        :data="words"
-        @done="$refs.train.$emit('memorizationDone')"
-      >
-        <template #item="{item, even}">
-          <TextItem :value="item" :even="even" size="72" />
-        </template>
-      </Memorizing>
-    </template>
+    <Preparation
+      v-else-if="step === 'preparation'"
+      :time="preparation"
+      @done="step = 'memorization'"
+      title="Memorization starts in:"
+    />
 
-    <template #recall>
-      <Recall @done="$refs.train.$emit('recallDone')" />
-    </template>
+    <Memorization
+      v-else-if="step === 'memorization'"
+      :autoNext="autoNext"
+      :data="words"
+      @done="memorizationDone"
+    >
+      <template #item="{item, even}">
+        <TextItem :value="item" :even="even" />
+      </template>
+    </Memorization>
 
-    <template #results>
-      <Results />
-    </template>
-  </Training>
+    <Preparation
+      v-else-if="step === 'recallPreparation'"
+      :time="recallPreparation"
+      @done="step = 'recall'"
+      title="Recall starts in:"
+      class="step"
+    />
+
+    <Recall v-else-if="step === 'recall'" @done="recallDone" />
+
+    <Results v-else-if="ster === 'results'" />
+  </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
 
-import Training from '@@/train/Training';
-
 import Setup from '@@/train/steps/Setup';
-import Memorizing from '@@/train/steps/Memorizing';
+import Preparation from '@@/train/steps/Preparation';
+import Memorization from '@@/train/steps/Memorization';
 import Recall from '@@/train/steps/Recall';
 import Results from '@@/train/steps/Results';
 
 import TextItem from '@@/train/TextItem';
 
 export default {
-  components: { Memorizing, Recall, Setup, Results, Training, TextItem },
+  components: { Setup, Preparation, Memorization, Recall, Results, TextItem },
   data: () => ({
-    words: []
+    words: [],
+    step: 'setup',
+    preparation: 10,
+    recallPreparation: 5,
+    autoNext: 2000
   }),
   async created() {
-    this.words = (await this.get(25)).map(w => w.value);
+    this.words = await this.rand(25);
   },
   methods: {
-    get(n) {
-      return this.rand(n);
+    setupDone() {
+      this.step = this.preparation > 0 ? 'preparation' : 'memorization';
+    },
+    memorizationDone() {
+      this.step = this.recallPreparation > 0 ? 'recallPreparation' : 'recall';
+    },
+    recallDone() {
+      this.step = 'results';
     },
     ...mapActions({
       rand: 'trainingData/randWords'
