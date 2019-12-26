@@ -1,5 +1,7 @@
 <template>
   <div>
+    <h1 class="mb-3">Training Setup</h1>
+
     <b-form @submit.prevent="submit" class="form">
       <b-form-group label="Items to Memorize" label-for="setup-let">
         <b-form-input
@@ -28,6 +30,7 @@
         <b-form-input
           id="setup-auto-next"
           v-model="data.autoNext"
+          type="number"
           required
         ></b-form-input>
       </b-form-group>
@@ -40,6 +43,7 @@
         <b-form-input
           id="setup-preparation"
           v-model="data.preparation"
+          type="number"
           required
         ></b-form-input>
       </b-form-group>
@@ -52,6 +56,7 @@
         <b-form-input
           id="setup-recall-preparation"
           v-model="data.recallPreparation"
+          type="number"
           required
         ></b-form-input>
       </b-form-group>
