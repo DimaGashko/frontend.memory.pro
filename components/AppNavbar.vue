@@ -23,6 +23,7 @@
           <b-nav-item active-class="active" to="/performance"
             >Performance</b-nav-item
           >
+          <b-nav-item active-class="active" to="/users">Users</b-nav-item>
           <b-nav-item active-class="active" to="/contacts">Contacts</b-nav-item>
         </b-navbar-nav>
 
