@@ -4,7 +4,7 @@
     <p>Train you memory and become a memory master!</p>
 
     <h2 class="mb-4">Let's Training</h2>
-    <TrainingList available="true" />
+    <TrainingList only-available="true" />
 
     <h2 class="mt-5">Last activity</h2>
     <ResultsList limit="3" class="mt-4" />
