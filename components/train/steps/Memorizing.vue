@@ -26,8 +26,6 @@ export default {
   props: ['params', 'data'],
   data: () => ({
     index: 0,
-    pervIndex: 0,
-    cur: 0,
     startedAt: null,
     times: []
   }),
@@ -44,29 +42,43 @@ export default {
     this.times = this.data.map(_ => 0);
   },
   methods: {
+    done() {
+      this.$emit('done', this.times);
+    },
     prev() {
-      if (this.index > 0) this.index--;
-      this.onChangeItemManually();
+      this.setIndex(this.index - 1);
     },
     next() {
-      if (this.index >= this.data.length - 1) {
-        this.done();
+      this.setIndex(this.index + 1);
+    },
+    first() {
+      this.setIndex(0);
+    },
+    finish() {
+      // Last index + 1 (go outside)
+      this.setIndex(this.data.length);
+    },
+    setIndex(value) {
+      if (value < 0) value = 0;
+
+      if (value === this.index) {
         return;
       }
 
-      this.index++;
-      this.onChangeItemManually();
-    },
-    first() {
-      this.index = 0;
-      this.onChangeItemManually();
-    },
-    done() {
-      this.index = this.data.length - 1;
-      console.log('finished');
-    },
-    onChangeItemManually() {
+      const now = Date.now();
+      const diff = now - this.showAt;
+
+      this.times[this.index] += diff;
+
+      this.showAt = now;
+      this.index = value;
+
       this.$refs.controls.restartAutoNext();
+
+      if (value > this.data.length - 1) {
+        value = this.data.length - 1;
+        // this.done();
+      }
     }
   }
 };

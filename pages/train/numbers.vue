@@ -5,11 +5,7 @@
     </template>
 
     <template #memorization="{params}">
-      <Memorizing
-        :params="params"
-        :data="words"
-        @done="$refs.train.$emit('memorizationDone')"
-      >
+      <Memorizing :params="params" :data="words" @done="memorizingDone">
         <template #item="{item, even}">
           <TextItem :value="item" :even="even" size="200" />
         </template>
@@ -42,7 +38,8 @@ import splitAndFormatByTemplate from '../../assets/scripts/splitByTemplate';
 export default {
   components: { Memorizing, Recall, Setup, Results, Training, TextItem },
   data: () => ({
-    words: []
+    words: [],
+    times: []
   }),
   async created() {
     this.words = splitAndFormatByTemplate('XX - XX', await this.get(100));
@@ -50,6 +47,12 @@ export default {
   methods: {
     get(n) {
       return this.rand(n);
+    },
+    memorizingDone(times) {
+      this.$refs.train.$emit('memorizationDone');
+      this.times = times;
+      console.log(times);
+      console.log(this.$refs.train);
     },
     ...mapActions({
       rand: 'trainingData/randNumbers'
