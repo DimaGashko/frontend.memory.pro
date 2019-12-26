@@ -1,12 +1,11 @@
 <template>
   <div>
     <h2>Words Results</h2>
-    <b-table
-      :items="wordsResults"
-      :fields="wordsResultsFields"
-      striped
-      hover
-    ></b-table>
+    <b-table :items="wordsResults" :fields="wordsResultsFields" striped hover>
+      <template #cell(id)="{item}">
+        <n-link :to="'/results/words/' + item.id">{{ item.id }}</n-link>
+      </template>
+    </b-table>
   </div>
 </template>
 
