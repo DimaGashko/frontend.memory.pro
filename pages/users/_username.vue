@@ -6,13 +6,11 @@
     </h1>
 
     <ul class="data-list">
-      <li class="data-list__item">Username: {{ user.username || '...' }}</li>
-      <li class="data-list__item">Email: {{ user.email || '...' }}</li>
-      <li class="data-list__item">
-        First name: {{ user.first_name || '...' }}
-      </li>
-      <li class="data-list__item">Last name: {{ user.last_name || '...' }}</li>
-      <li class="data-list__item">Birth Date: {{ user.birth || '...' }}</li>
+      <li class="data-list__item">Username: {{ user.username }}</li>
+      <li class="data-list__item">Email: {{ user.email || hidden }}</li>
+      <li class="data-list__item">First name: {{ user.first_name }}</li>
+      <li class="data-list__item">Last name: {{ user.last_name }}</li>
+      <li class="data-list__item">Birth Date: {{ user.birth || hidden }}</li>
     </ul>
   </div>
 </template>
@@ -23,23 +21,24 @@ import { mapActions } from 'vuex';
 export default {
   data: () => ({
     user: {},
-    own: false
+    own: false,
+    hidden: '<hidden>'
   }),
-  mounted() {
-    this.user = this.loadUser();
+  async created() {
+    this.user = await this.loadUser();
   },
   methods: {
     loadUser() {
-      this.own = this.$route.params.username === this.$auth.user.username;
+      this.own = false; // this.$route.params.username === this.$auth.user.username;
 
       if (this.own) {
         return this.$auth.user;
       }
 
-      return this.fetchUser(this.$root.params.username);
+      return this.fetchUser(this.$route.params.username);
     },
     ...mapActions({
-      fetchUser: 'users/fetcdhUser'
+      fetchUser: 'users/fetchUser'
     })
   }
 };
