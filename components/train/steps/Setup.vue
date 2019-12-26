@@ -4,7 +4,7 @@
       <b-form-group label="Items to Memorize" label-for="setup-let">
         <b-form-input
           id="setup-len"
-          v-model="data.number"
+          v-model="data.len"
           type="number"
           required
           min="10"
@@ -20,33 +20,39 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group label="Auto next:" label-for="setup-auto-next">
+      <b-form-group
+        label="Auto next:"
+        label-for="setup-auto-next"
+        description="Enter 0 to disabled"
+      >
         <b-form-input
           id="setup-auto-next"
-          v-model="data.preparation"
+          v-model="data.autoNext"
           required
-          description="Enter 0 to disabled"
-        ></b-form-input>
-      </b-form-group>
-
-      <b-form-group label="Preparation time:" label-for="setup-preparation">
-        <b-form-input
-          id="setup-preparation"
-          v-model="data.preparation"
-          required
-          description="Enter 0 to disabled"
         ></b-form-input>
       </b-form-group>
 
       <b-form-group
         label="Preparation time:"
+        label-for="setup-preparation"
+        description="Enter 0 to disabled"
+      >
+        <b-form-input
+          id="setup-preparation"
+          v-model="data.preparation"
+          required
+        ></b-form-input>
+      </b-form-group>
+
+      <b-form-group
+        label="Recall Preparation Time:"
         label-for="setup-recall-preparation"
+        description="Enter 0 to disabled"
       >
         <b-form-input
           id="setup-recall-preparation"
-          v-model="data.preparation"
+          v-model="data.recallPreparation"
           required
-          description="Enter 0 to disabled"
         ></b-form-input>
       </b-form-group>
 
@@ -59,9 +65,9 @@
 export default {
   data() {
     return {
-      form: {
-        number: 50,
-        template: 'XX  XXX  XX',
+      data: {
+        len: 50,
+        template: 'X X X',
         autoNext: 1000,
         preparation: 10,
         recallPreparation: 5
@@ -70,7 +76,7 @@ export default {
   },
   methods: {
     submit() {
-      this.$emit('done', this.form);
+      this.$emit('done', this.data);
     }
   }
 };

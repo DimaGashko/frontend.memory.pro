@@ -45,24 +45,43 @@ import TextItem from '@@/train/TextItem';
 export default {
   components: { Setup, Preparation, Memorization, Recall, TextItem },
   data: () => ({
-    words: [],
+    rawWords: [],
+    time: [],
+    answers: [],
     step: 'setup',
     preparation: 10,
     recallPreparation: 5,
-    autoNext: 2000
+    autoNext: 2000,
+    templat: '',
+    len: 0
   }),
-  async created() {
-    this.words = await this.rand(25);
+  computed: {
+    words() {
+      return this.rawWords.map(w => w.value);
+    }
   },
   methods: {
-    setupDone() {
+    setupDone({ len, template, autoNext, preparation, recallPreparation }) {
       this.step = this.preparation > 0 ? 'preparation' : 'memorization';
+
+      this.len = len;
+      this.template = template;
+      this.autoNext = autoNext;
+      this.preparation = preparation;
+      this.recallPreparation = recallPreparation;
+
+      this.fetchData();
     },
     memorizationDone(times) {
       this.step = this.recallPreparation > 0 ? 'recallPreparation' : 'recall';
+      this.times = times;
     },
     recallDone(answers) {
       this.step = 'results';
+      this.answers = answers;
+    },
+    async fetchData() {
+      this.rawWords = await this.rand(this.len);
     },
     ...mapActions({
       rand: 'trainingData/randWords'
