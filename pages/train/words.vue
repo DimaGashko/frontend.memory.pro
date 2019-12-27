@@ -42,7 +42,7 @@ import splitAndFormatByTemplate from '@/assets/scripts/splitByTemplate';
 export default {
   components: { Setup, Preparation, Memorization, Recall },
   data: () => ({
-    words: [],
+    data: [],
     ids: [],
     times: [],
     answers: [],
@@ -81,13 +81,13 @@ export default {
       this.done();
     },
     async fetchData() {
-      const rawWords = await this.rand(this.len);
-      const words = (window.words = rawWords.map(w => w.value));
-      const ids = rawWords.map(w => w.id);
+      const rawData = await this.rand(this.len);
+      const data = (window.data = rawData.map(w => w.value));
+      const ids = rawData.map(w => w.id);
       this.itemSize = this.template.split('X').length - 1;
 
       this.ids = chunk(ids, this.itemSize);
-      this.words = splitAndFormatByTemplate(this.template, words);
+      this.words = splitAndFormatByTemplate(this.template, data);
     },
     async done() {
       const trainResult = {
