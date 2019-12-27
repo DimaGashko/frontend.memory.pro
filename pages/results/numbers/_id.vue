@@ -1,6 +1,6 @@
 <template>
   <div>
-    <pre>{{ data }}</pre>
+    <pre class="code">{{ data }}</pre>
   </div>
 </template>
 
@@ -21,3 +21,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+pre {
+  color: var(--primary);
+}
+</style>
