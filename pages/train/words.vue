@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Setup v-if="step === 'setup'" @done="setupDone" />
+    <Setup v-if="step === 'setup'" @done="setupDone" template="X" />
 
     <Preparation
       v-else-if="step === 'preparation'"

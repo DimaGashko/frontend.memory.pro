@@ -72,16 +72,22 @@
 
 <script>
 export default {
+  props: ['template'],
   data() {
     return {
       data: {
         len: 50,
-        template: 'X X X',
+        template: '',
         autoNext: 1000,
         preparation: 10,
         recallPreparation: 5
       }
     };
+  },
+  created() {
+    if (this.template) {
+      this.data.template = this.template;
+    }
   },
   methods: {
     submit() {
