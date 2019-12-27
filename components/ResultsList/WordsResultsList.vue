@@ -48,15 +48,16 @@ export default {
   created() {
     this.fetchWords();
   },
-  methods: {},
-  async fetchWords() {
-    this.wordsResults = await this.fetchWordsResults({
-      user_id: this.userId,
-      limit: this.limit
-    });
-  },
-  ...mapActions({
-    fetchWordsResults: 'results/userWordsResults'
-  })
+  methods: {
+    async fetchWords() {
+      this.wordsResults = await this.fetchWordsResults({
+        user_id: this.userId,
+        limit: this.limit
+      });
+    },
+    ...mapActions({
+      fetchWordsResults: 'results/userWordsResults'
+    })
+  }
 };
 </script>

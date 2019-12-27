@@ -1,8 +1,8 @@
 <template>
-  <div class="root">
-    <NumbersResultsList :userId="userId" limit="limit" class="item" />
-    <WordsResultsList :userId="userId" limit="limit" class="item" />
-    <ImagesResultsList :userId="userId" limit="limit" class="item" />
+  <div class="mt-3">
+    <NumbersResultsList :userId="userId" :limit="limit" class="item" />
+    <WordsResultsList :userId="userId" :limit="limit" class="item" />
+    <ImagesResultsList :userId="userId" :limit="limit" class="item" />
   </div>
 </template>
 
@@ -18,11 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.root {
-  margin-bottom: 64px;
-}
-
 .item {
-  margin-top: 20px;
+  margin-bottom: 50px;
 }
 </style>
