@@ -64,7 +64,7 @@ export default {
   }),
   computed: {
     recallLen() {
-      return this.len / this.itemSize;
+      return Math.ceil(this.len / this.itemSize);
     }
   },
   created() {
@@ -117,11 +117,13 @@ export default {
     },
     getTrainigDataResult() {
       return this.ids.map((ids, itemIndex) => {
+        const r = this.answers[itemIndex];
+
         return {
           time: this.times[itemIndex],
           data: ids.map((id, dataIndex) => ({
             correct: id,
-            actual: this.answers[itemIndex][dataIndex]
+            actual: r ? r[dataIndex] : null
           }))
         };
       });

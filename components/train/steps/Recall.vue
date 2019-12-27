@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-2">
     <div class="items-container">
       <RecallItem ref="items" v-for="n in len" :key="n" :index="n" />
     </div>

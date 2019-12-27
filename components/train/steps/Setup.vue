@@ -78,7 +78,7 @@ export default {
       data: {
         len: 50,
         template: '',
-        autoNext: 1000,
+        autoNext: 3000,
         preparation: 5,
         recallPreparation: 5
       }

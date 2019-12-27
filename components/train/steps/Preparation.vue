@@ -2,7 +2,9 @@
   <div class="root">
     <div class="title">{{ title }}</div>
     <SimpleTimer :time="time" @done="$emit('done')" class="time" />
-    <b-button @click="$emit('done')" class="skip">Skip</b-button>
+    <b-button @click="$emit('done')" variant="primary" class="skip"
+      >Skip</b-button
+    >
   </div>
 </template>
 
