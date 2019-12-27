@@ -31,6 +31,8 @@
           id="setup-auto-next"
           v-model="data.autoNext"
           type="number"
+          step="100"
+          min="0"
           required
         ></b-form-input>
       </b-form-group>
@@ -44,6 +46,7 @@
           id="setup-preparation"
           v-model="data.preparation"
           type="number"
+          min="0"
           required
         ></b-form-input>
       </b-form-group>
@@ -57,6 +60,7 @@
           id="setup-recall-preparation"
           v-model="data.recallPreparation"
           type="number"
+          min="0"
           required
         ></b-form-input>
       </b-form-group>
