@@ -12,7 +12,7 @@
     <Memorization
       v-else-if="step === 'memorization'"
       :autoNext="autoNext"
-      :data="words"
+      :data="data"
       @done="memorizationDone"
     />
 
@@ -87,7 +87,7 @@ export default {
       this.itemSize = this.template.split('X').length - 1;
 
       this.ids = chunk(ids, this.itemSize);
-      this.words = splitAndFormatByTemplate(this.template, data);
+      this.data = splitAndFormatByTemplate(this.template, data);
     },
     async done() {
       const trainResult = {

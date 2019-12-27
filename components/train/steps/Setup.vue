@@ -10,7 +10,7 @@
           type="number"
           required
           min="10"
-          max="10000"
+          max="100000"
         ></b-form-input>
       </b-form-group>
 
@@ -79,7 +79,7 @@ export default {
         len: 50,
         template: '',
         autoNext: 1000,
-        preparation: 10,
+        preparation: 5,
         recallPreparation: 5
       }
     };

@@ -16,7 +16,7 @@
       @done="memorizationDone"
     >
       <template #item="{item, even}">
-        <TextItem :value="item" :even="even" size="200" />
+        <TextItem :value="item" :even="even" size="150" />
       </template>
     </Memorization>
 
@@ -28,7 +28,7 @@
       class="step"
     />
 
-    <Recall :len="len" v-else-if="step === 'recall'" @done="recallDone" />
+    <Recall :len="recallLen" v-else-if="step === 'recall'" @done="recallDone" />
   </div>
 </template>
 
@@ -62,12 +62,17 @@ export default {
     itemSize: 0,
     startAt: null
   }),
+  computed: {
+    recallLen() {
+      return this.len / this.itemSize;
+    }
+  },
   created() {
     this.startAt = new Date();
   },
   methods: {
     async setupDone(data) {
-      this.len = data.len;
+      this.len = +data.len;
       this.template = data.template;
       this.autoNext = data.autoNext;
       this.preparation = data.preparation;
@@ -81,18 +86,22 @@ export default {
       this.times = times;
     },
     recallDone(answers, time) {
-      this.answers = chunk(answers, this.itemSize);
+      this.answers = chunk(
+        answers.flatMap(n => n.split('')),
+        this.itemSize
+      );
       this.recallTime = time;
 
       this.done();
     },
     async fetchData() {
-      const data = await this.rand(this.len);
+      const data = (window.data = await this.rand(this.len));
       const ids = data.map(n => n);
       this.itemSize = this.template.split('X').length - 1;
 
       this.ids = chunk(ids, this.itemSize);
       this.data = splitAndFormatByTemplate(this.template, data);
+      console.log(this.data, data);
     },
     async done() {
       const trainResult = {
@@ -120,7 +129,7 @@ export default {
     },
     ...mapActions({
       rand: 'trainingData/randNumbers',
-      save: 'results/saveWordsNumbers'
+      save: 'results/saveNumbersResult'
     })
   }
 };
