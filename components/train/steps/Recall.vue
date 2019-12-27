@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="fields">
+    <div class="items-container">
       <RecallItem ref="items" v-for="n in len" :key="n" :index="n" />
     </div>
     <div class="controls mt-4">
@@ -40,5 +40,12 @@ export default {
 <style lang="scss" scoped>
 .controls {
   text-align: center;
+}
+
+.items-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-auto-flow: dense;
+  gap: 1em;
 }
 </style>
