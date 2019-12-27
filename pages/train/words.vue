@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     async setupDone(data) {
-      this.len = data.len;
+      this.len = +data.len;
       this.template = data.template;
       this.autoNext = data.autoNext;
       this.preparation = data.preparation;
