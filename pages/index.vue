@@ -13,7 +13,7 @@
 
 <script>
 import TrainingList from '@@/TrainingList';
-import ResultsList from '@@/ResultsList';
+import ResultsList from '@@/ResultsList/ResultsList';
 
 export default {
   components: { TrainingList, ResultsList }

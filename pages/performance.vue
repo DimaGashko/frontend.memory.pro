@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import ResultsList from '@@/ResultsList';
+import ResultsList from '@@/ResultsList/ResultsList';
 
 export default {
   components: { ResultsList },
