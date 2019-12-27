@@ -99,8 +99,8 @@ export default {
         items: this.getTrainigDataResult()
       };
 
-      const result = await this.save(trainResult);
-      console.log(result);
+      const { id } = await this.save(trainResult);
+      this.$router.push(`/results/words/${id}`);
     },
     getTrainigDataResult() {
       return this.ids.map((ids, itemIndex) => {
