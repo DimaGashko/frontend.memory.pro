@@ -14,11 +14,7 @@
       :autoNext="autoNext"
       :data="words"
       @done="memorizationDone"
-    >
-      <template #item="{item, even}">
-        <TextItem :value="item" :even="even" />
-      </template>
-    </Memorization>
+    />
 
     <Preparation
       v-else-if="step === 'recallPreparation'"
@@ -41,12 +37,10 @@ import Preparation from '@@/train/steps/Preparation';
 import Memorization from '@@/train/steps/Memorization';
 import Recall from '@@/train/steps/Recall';
 
-import TextItem from '@@/train/TextItem';
-
 import splitAndFormatByTemplate from '@/assets/scripts/splitByTemplate';
 
 export default {
-  components: { Setup, Preparation, Memorization, Recall, TextItem },
+  components: { Setup, Preparation, Memorization, Recall },
   data: () => ({
     words: [],
     ids: [],
