@@ -10,8 +10,7 @@
 import ResultsList from '@@/ResultsList';
 
 export default {
-  components: { ResultsList },
-  middleware: 'auth'
+  components: { ResultsList }
 };
 </script>
 

@@ -25,11 +25,10 @@ export default {
   },
   created() {
     this.startAt = Date.now();
-    console.log(this.len);
   },
   methods: {
     done() {
-      const time = Date.now() - this.startAt;
+      const time = (Date.now() - this.startAt) / 1000;
       this.$emit('done', this.answers, time);
     }
   }

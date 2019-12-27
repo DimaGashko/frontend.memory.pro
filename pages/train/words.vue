@@ -62,6 +62,9 @@ export default {
     itemSize: 0,
     startAt: null
   }),
+  created() {
+    this.startAt = new Date();
+  },
   methods: {
     async setupDone(data) {
       this.len = data.len;
@@ -73,16 +76,13 @@ export default {
       await this.fetchData();
       this.step = this.preparation > 0 ? 'preparation' : 'memorization';
     },
-    created() {
-      this.startAt = Date.now();
-    },
     memorizationDone(times) {
       this.step = this.recallPreparation > 0 ? 'recallPreparation' : 'recall';
       this.times = times;
     },
     recallDone(answers, time) {
       this.answers = chunk(answers, this.itemSize);
-      this.recallDone = time;
+      this.recallTime = time;
 
       this.done();
     },
@@ -95,7 +95,7 @@ export default {
       this.ids = chunk(ids, this.itemSize);
       this.words = splitAndFormatByTemplate(this.template, words);
     },
-    done() {
+    async done() {
       const trainResult = {
         start_at: this.startAt,
         preparation_time: this.preparation,
@@ -105,8 +105,8 @@ export default {
         items: this.getTrainigDataResult()
       };
 
-      console.log(JSON.stringify(trainResult));
-      // this.save(trainResult);
+      const result = await this.save(trainResult);
+      console.log(result);
     },
     getTrainigDataResult() {
       return this.ids.map((ids, itemIndex) => {
@@ -120,7 +120,8 @@ export default {
       });
     },
     ...mapActions({
-      rand: 'trainingData/randWords'
+      rand: 'trainingData/randWords',
+      save: 'results/saveWordsResult'
     })
   }
 };

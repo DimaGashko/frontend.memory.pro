@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <div class="item__index">{{ index }}</div>
-    <input ref="inp" type="text" class="item__inp" />
+    <input ref="inp" type="text" class="item__inp" autocomplete="off" />
   </div>
 </template>
 
