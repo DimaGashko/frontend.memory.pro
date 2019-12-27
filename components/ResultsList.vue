@@ -17,6 +17,18 @@
             {{ user ? user.username : 'Guest' }}
           </n-link>
         </template>
+
+        <template #cell(preparation_time)="{item: {preparation_time}}">
+          {{ preparation_time | time }}
+        </template>
+
+        <template #cell(recall_preparation_time)="{item}">
+          {{ item.recall_preparation_time | time }}
+        </template>
+
+        <template #cell(recall_time)="{item}">
+          {{ item.recall_time | time }}
+        </template>
       </b-table>
     </div>
 
@@ -31,6 +43,18 @@
           <n-link :to="'/users/' + (user ? user.username : '')">
             {{ user ? user.username : 'Guest' }}
           </n-link>
+        </template>
+
+        <template #cell(preparation_time)="{item}">
+          {{ item.preparation_time | time }}
+        </template>
+
+        <template #cell(recall_preparation_time)="{item}">
+          {{ item.recall_preparation_time | time }}
+        </template>
+
+        <template #cell(recall_time)="{item}">
+          {{ item.recall_time | time }}
         </template>
       </b-table>
     </div>
@@ -51,6 +75,18 @@
           <n-link :to="'/users/' + (user ? user.username : '')">
             {{ user ? user.username : 'Guest' }}
           </n-link>
+        </template>
+
+        <template #cell(preparation_time)="{item: {preparation_time}}">
+          {{ preparation_time | time }}
+        </template>
+
+        <template #cell(recall_preparation_time)="{item}">
+          {{ item.recall_preparation_time | time }}
+        </template>
+
+        <template #cell(recall_time)="{item}">
+          {{ item.recall_time | time }}
         </template>
       </b-table>
     </div>
