@@ -3,8 +3,8 @@
     <div class="items-container">
       <RecallItem ref="items" v-for="n in len" :key="n" :index="n" />
     </div>
-    <div class="controls mt-4">
-      <b-button @click="done" size="lg">Continue</b-button>
+    <div class="controls mt-5 mb-5">
+      <b-button @click="done" variant="primary" size="lg">Continue</b-button>
     </div>
   </div>
 </template>

@@ -4,10 +4,11 @@
     border-variant="primary"
     header-bg-variant="primary"
     header-text-variant="white"
+    header-class="header"
     align="center"
     no-body
   >
-    <b-form-input v-model="value" class="text-center" size="lg"></b-form-input>
+    <b-form-input v-model="value" class="text-center"></b-form-input>
   </b-card>
 </template>
 
@@ -19,3 +20,9 @@ export default {
   })
 };
 </script>
+
+<style lang="scss" scoped>
+.header {
+  padding: 0.2rem 0.2rem !important;
+}
+</style>
