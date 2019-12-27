@@ -1,23 +1,21 @@
 <template>
-  <div class="item">
-    <div class="item__index">{{ index }}</div>
-    <input ref="inp" type="text" class="item__inp" autocomplete="off" />
-  </div>
+  <b-card
+    :header="'' + index"
+    border-variant="primary"
+    header-bg-variant="primary"
+    header-text-variant="white"
+    align="center"
+    no-body
+  >
+    <b-form-input v-model="value" class="text-center" size="lg"></b-form-input>
+  </b-card>
 </template>
 
 <script>
 export default {
   props: ['index'],
-  computed: {
-    value() {
-      return this.$refs.inp.value.trim();
-    }
-  }
+  data: () => ({
+    value: ''
+  })
 };
 </script>
-
-<style lang="scss" scoped>
-.item__inp {
-  width: 100%;
-}
-</style>

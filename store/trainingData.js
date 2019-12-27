@@ -25,7 +25,7 @@ export const actions = {
     }
   },
   randNumbers(_, number) {
-    return new Array(number).fill(0).map(() => {
+    return new Array(Math.ceil(number)).fill(0).map(() => {
       return Math.round(Math.random() * 9);
     });
   }

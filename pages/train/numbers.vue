@@ -101,7 +101,6 @@ export default {
 
       this.ids = chunk(ids, this.itemSize);
       this.data = splitAndFormatByTemplate(this.template, data);
-      console.log(this.data, data);
     },
     async done() {
       const trainResult = {
