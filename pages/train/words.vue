@@ -43,7 +43,7 @@ import Recall from '@@/train/steps/Recall';
 
 import TextItem from '@@/train/TextItem';
 
-import splitAndFormatByTemplate from '../../assets/scripts/splitByTemplate';
+import splitAndFormatByTemplate from '@/assets/scripts/splitByTemplate';
 
 export default {
   components: { Setup, Preparation, Memorization, Recall, TextItem },
@@ -53,43 +53,42 @@ export default {
     times: [],
     answers: [],
     step: 'setup',
-    preparation: 10,
-    recallPreparation: 5,
+    preparation: 0,
+    recallPreparation: 0,
+    recallTime: 0,
     autoNext: 2000,
     template: '',
     len: 0,
-    itemSize: 0
+    itemSize: 0,
+    startAt: null
   }),
   methods: {
-    async setupDone({
-      len,
-      template,
-      autoNext,
-      preparation,
-      recallPreparation
-    }) {
-      this.len = len;
-      this.template = template;
-      this.autoNext = autoNext;
-      this.preparation = preparation;
-      this.recallPreparation = recallPreparation;
+    async setupDone(data) {
+      this.len = data.len;
+      this.template = data.template;
+      this.autoNext = data.autoNext;
+      this.preparation = data.preparation;
+      this.recallPreparation = data.recallPreparation;
 
       await this.fetchData();
       this.step = this.preparation > 0 ? 'preparation' : 'memorization';
+    },
+    created() {
+      this.startAt = Date.now();
     },
     memorizationDone(times) {
       this.step = this.recallPreparation > 0 ? 'recallPreparation' : 'recall';
       this.times = times;
     },
-    recallDone(answers) {
-      this.step = 'results';
+    recallDone(answers, time) {
       this.answers = chunk(answers, this.itemSize);
+      this.recallDone = time;
 
       this.done();
     },
     async fetchData() {
       const rawWords = await this.rand(this.len);
-      const words = rawWords.map(w => w.value);
+      const words = (window.words = rawWords.map(w => w.value));
       const ids = rawWords.map(w => w.id);
       this.itemSize = this.template.split('X').length - 1;
 
@@ -97,7 +96,20 @@ export default {
       this.words = splitAndFormatByTemplate(this.template, words);
     },
     done() {
-      const resultsData = this.ids.map((ids, itemIndex) => {
+      const trainResult = {
+        start_at: this.startAt,
+        preparation_time: this.preparation,
+        recall_preparation_time: this.recallPreparation,
+        recall_time: this.recallTime,
+        template: this.template,
+        items: this.getTrainigDataResult()
+      };
+
+      console.log(JSON.stringify(trainResult));
+      // this.save(trainResult);
+    },
+    getTrainigDataResult() {
+      return this.ids.map((ids, itemIndex) => {
         return {
           time: this.times[itemIndex],
           data: ids.map((id, dataIndex) => ({
@@ -106,8 +118,6 @@ export default {
           }))
         };
       });
-
-      console.log(resultsData);
     },
     ...mapActions({
       rand: 'trainingData/randWords'
