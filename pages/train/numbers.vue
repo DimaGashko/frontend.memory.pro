@@ -113,7 +113,7 @@ export default {
       };
 
       const { id } = await this.save(trainResult);
-      this.$router.push(`/results/words/${id}`);
+      this.$router.push(`/results/numbers/${id}`);
     },
     getTrainigDataResult() {
       return this.ids.map((ids, itemIndex) => {
