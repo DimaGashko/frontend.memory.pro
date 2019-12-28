@@ -2,7 +2,7 @@ import path from 'path';
 import env from './.env';
 
 export default {
-  mode: 'spa',
+  mode: 'universal',
 
   head: {
     title: "Memory.pro - you're going to become a memory master!",
