@@ -2,7 +2,7 @@ import path from 'path';
 import envDev from './.env.dev';
 import envProd from './.env.prod';
 
-const env = process.env.NODE_ENV === 'productino' ? envProd : envDev;
+const env = process.env.NODE_ENV === 'production' ? envProd : envDev;
 
 export default {
   mode: 'universal',
