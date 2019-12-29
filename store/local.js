@@ -19,7 +19,7 @@ export const state = () => ({
       path: '/train/images',
       description: 'Memorize random images',
       image: '/img/train-preview/images.jpg',
-      available: true
+      available: false
     },
     {
       name: 'Cards',
