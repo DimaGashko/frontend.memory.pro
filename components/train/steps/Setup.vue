@@ -79,8 +79,8 @@ export default {
         len: 50,
         template: '',
         autoNext: 3000,
-        preparation: 5,
-        recallPreparation: 5
+        preparation: 3,
+        recallPreparation: 0
       }
     };
   },
