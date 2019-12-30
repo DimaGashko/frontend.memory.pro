@@ -12,7 +12,7 @@ export const actions = {
   },
   async fetchAllUsers() {
     try {
-      return await this.$axios.$get(`/users/`);
+      return await this.$axios.$get(`/users`);
     } catch (e) {
       processRequestError(e);
     }
