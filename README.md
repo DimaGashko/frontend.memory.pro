@@ -15,6 +15,7 @@
 - Axios
 - Bootstrap
 - Yarn
+- Heroku
 
 ## Build Setup
 
